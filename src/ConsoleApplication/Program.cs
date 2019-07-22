@@ -8,6 +8,7 @@ namespace ConsoleApplication
         static void Main(string[] args)
         {
             var train = new Train();
+            train.StartEngines();
             Console.WriteLine("Hello World!");
         }
     }
