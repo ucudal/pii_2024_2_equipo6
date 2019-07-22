@@ -1,4 +1,5 @@
 ﻿using System;
+using ClassLibrary;
 
 namespace ConsoleApplication
 {
@@ -6,6 +7,7 @@ namespace ConsoleApplication
     {
         static void Main(string[] args)
         {
+            var train = new Train();
             Console.WriteLine("Hello World!");
         }
     }
