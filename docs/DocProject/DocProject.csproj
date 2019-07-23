@@ -16,6 +16,38 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="template\darkfx\.git\config" />
+    <None Include="template\darkfx\.git\description" />
+    <None Include="template\darkfx\.git\HEAD" />
+    <None Include="template\darkfx\.git\hooks\applypatch-msg.sample" />
+    <None Include="template\darkfx\.git\hooks\commit-msg.sample" />
+    <None Include="template\darkfx\.git\hooks\fsmonitor-watchman.sample" />
+    <None Include="template\darkfx\.git\hooks\post-update.sample" />
+    <None Include="template\darkfx\.git\hooks\pre-applypatch.sample" />
+    <None Include="template\darkfx\.git\hooks\pre-commit.sample" />
+    <None Include="template\darkfx\.git\hooks\pre-push.sample" />
+    <None Include="template\darkfx\.git\hooks\pre-rebase.sample" />
+    <None Include="template\darkfx\.git\hooks\pre-receive.sample" />
+    <None Include="template\darkfx\.git\hooks\prepare-commit-msg.sample" />
+    <None Include="template\darkfx\.git\hooks\update.sample" />
+    <None Include="template\darkfx\.git\index" />
+    <None Include="template\darkfx\.git\info\exclude" />
+    <None Include="template\darkfx\.git\logs\HEAD" />
+    <None Include="template\darkfx\.git\logs\refs\heads\master" />
+    <None Include="template\darkfx\.git\logs\refs\remotes\origin\HEAD" />
+    <None Include="template\darkfx\.git\objects\pack\pack-8177c6c745d2ed1614da6d87bf18abb8fc923dcc.idx" />
+    <None Include="template\darkfx\.git\objects\pack\pack-8177c6c745d2ed1614da6d87bf18abb8fc923dcc.pack" />
+    <None Include="template\darkfx\.git\packed-refs" />
+    <None Include="template\darkfx\.git\refs\heads\master" />
+    <None Include="template\darkfx\.git\refs\remotes\origin\HEAD" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="template\darkfx\.git\objects\info\" />
+    <Folder Include="template\darkfx\.git\refs\tags\" />
+  </ItemGroup>
+
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="docfx" />
   </Target>

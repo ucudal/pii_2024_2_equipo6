@@ -44,7 +44,7 @@
         ],
         "exclude": [
           "obj/**",
-          "_site/**"
+          "wwwroot/**"
         ]
       }
     ],
@@ -52,7 +52,8 @@
     "globalMetadataFiles": [],
     "fileMetadataFiles": [],
     "template": [
-      "default"
+      "default",
+      "templates/darkfx"
     ],
     "postProcessors": [],
     "markdownEngineName": "markdig",
