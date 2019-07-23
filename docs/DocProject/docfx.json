@@ -2,10 +2,10 @@
   "metadata": [
     {
       "src": [
-		{
-          "files": ["**/**.csproj"],
+        {
+          "files": [ "**/**.csproj" ],
           "exclude": [ "**/bin/**", "**/obj/**" ],
-          "src": "../src"
+          "src": "../../src"
         }
       ],
       "dest": "api",
@@ -48,7 +48,7 @@
         ]
       }
     ],
-    "dest": "_site",
+    "dest": "wwwroot",
     "globalMetadataFiles": [],
     "fileMetadataFiles": [],
     "template": [
