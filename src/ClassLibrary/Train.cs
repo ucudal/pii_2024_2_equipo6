@@ -1,51 +1,50 @@
-﻿using System;
-
-namespace ClassLibrary
+﻿namespace ClassLibrary
 {
+    using System;
+
     /// <summary>
     /// This Class represent a basic Train
     /// </summary>
     public class Train
     {
-        private bool _isStartedEngine;
-
+        public bool IsStartedEngine { get; private set; }
 
         /// <summary>
-        /// Start train`s engines
+        /// Start train`s engines.
         /// </summary>
         /// <returns>
-        /// True if engines can be started, otherwise false
+        /// True if engines can be started, otherwise false.
         /// </returns>
         public bool StartEngines()
         {
-            if (_isStartedEngine)
+            if (this.IsStartedEngine)
             {
                 Console.Write("The engines are already running");
                 return false;
             }
-            _isStartedEngine = true;
+
+            this.IsStartedEngine = true;
             Console.Write("Engines on");
             return true;
         }
-        
+
         /// <summary>
-        /// Stop train`s engines
+        /// Stop train`s engines.
         /// </summary>
         /// <returns>
-        /// True if engines can be stopped, otherwise false
+        /// True if engines can be stopped, otherwise false.
         /// </returns>
         public bool StopEngines()
         {
-            if (_isStartedEngine)
+            if (this.IsStartedEngine)
             {
-                _isStartedEngine = false;
+                this.IsStartedEngine = false;
                 Console.Write("Engines off");
                 return true;
             }
+
             Console.Write("The engines are already stopped");
-            return _isStartedEngine;
+            return this.IsStartedEngine;
         }
-        
-        
     }
 }

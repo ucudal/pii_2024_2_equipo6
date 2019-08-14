@@ -3,9 +3,9 @@
     {
       "src": [
         {
-          "files": [ "**/**.csproj" ],
+          "files": [ "**.csproj" ],
           "exclude": [ "**/bin/**", "**/obj/**" ],
-          "src": "../../src"
+          "src": "../src"
         }
       ],
       "dest": "api",
@@ -44,16 +44,15 @@
         ],
         "exclude": [
           "obj/**",
-          "wwwroot/**"
+          "site/**"
         ]
       }
     ],
-    "dest": "wwwroot",
+    "dest": "site",
     "globalMetadataFiles": [],
     "fileMetadataFiles": [],
     "template": [
-      "default",
-      "templates/darkfx"
+      "default"
     ],
     "postProcessors": [],
     "markdownEngineName": "markdig",

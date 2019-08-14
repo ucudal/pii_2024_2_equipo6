@@ -6,6 +6,7 @@
 
 <PropertyGroup>
     <CodeAnalysisRuleSet>ruleset.xml</CodeAnalysisRuleSet>
+    <Copyright>Universidad Católica del Uruguay</Copyright>
 </PropertyGroup>
 
   <ItemGroup>
