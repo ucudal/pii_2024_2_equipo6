@@ -1,50 +1,60 @@
-﻿namespace ClassLibrary
-{
-    using System;
+﻿//--------------------------------------------------------------------------------
+// <copyright file="Train.cs" company="Universidad Católica del Uruguay">
+//     Copyright (c) Programación II. Derechos reservados.
+// </copyright>
+//--------------------------------------------------------------------------------
 
+using System;
+
+namespace ClassLibrary
+{
     /// <summary>
-    /// This Class represent a basic Train
+    /// Esta clase representa un tran muy básico.
     /// </summary>
     public class Train
     {
-        public bool IsStartedEngine { get; private set; }
+        /// <summary>
+        /// Obtiene un valor que indica si las maquinas del tren han sido encendidas o no..
+        /// </summary>
+        /// <value><c>true</c> si las máquinas fueron encendidas, <c>false</c> en caso contrario.</value>
+        public bool IsEngineStarted { get; private set; }
 
         /// <summary>
-        /// Start train`s engines.
+        /// Enciende las máquinas del tren.
         /// </summary>
         /// <returns>
-        /// True if engines can be started, otherwise false.
+        /// <c>true</c> si las máquinas pueden ser encendidas, <c>false</c> en caso contrario.
         /// </returns>
         public bool StartEngines()
         {
-            if (this.IsStartedEngine)
+            if (this.IsEngineStarted)
             {
                 Console.Write("The engines are already running");
                 return false;
             }
 
-            this.IsStartedEngine = true;
+            this.IsEngineStarted = true;
             Console.Write("Engines on");
             return true;
         }
 
         /// <summary>
-        /// Stop train`s engines.
+        /// Detiene las máquinas del tren.
         /// </summary>
         /// <returns>
-        /// True if engines can be stopped, otherwise false.
+        /// <c>true</c> si las máquinas pueden ser detenidas, <c>false</c> en caso contrario.
         /// </returns>
         public bool StopEngines()
         {
-            if (this.IsStartedEngine)
+            if (this.IsEngineStarted)
             {
-                this.IsStartedEngine = false;
+                this.IsEngineStarted = false;
                 Console.Write("Engines off");
                 return true;
             }
 
             Console.Write("The engines are already stopped");
-            return this.IsStartedEngine;
+            return this.IsEngineStarted;
         }
     }
 }

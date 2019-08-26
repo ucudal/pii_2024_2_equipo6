@@ -16,11 +16,20 @@ namespace Tests
         }
 
         [Test]
-        public void StartTrain()
+        public void StartTrainTest()
         {
             Assert.NotNull(train);
             train.StartEngines();
-            Assert.True(train.IsStartedEngine);
+            Assert.True(train.IsEngineStarted);
+        }
+
+        [Test]
+        public void StopTrainTest()
+        {
+            Assert.NotNull(train);
+            train.StartEngines();
+            train.StopEngines();
+            Assert.False(train.IsEngineStarted);
         }
     }
 }

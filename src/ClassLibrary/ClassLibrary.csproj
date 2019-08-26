@@ -4,45 +4,15 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
-<PropertyGroup>
-    <CodeAnalysisRuleSet>ruleset.xml</CodeAnalysisRuleSet>
-    <Copyright>Universidad Católica del Uruguay</Copyright>
-</PropertyGroup>
-
-  <ItemGroup>
-    <_UnmanagedRegistrationCache Remove="obj\ClassLibrary.csproj.UnmanagedRegistration.cache" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <_ResolveComReferenceCache Remove="obj\Debug\netstandard2.0\ClassLibrary.csproj.ResolveComReference.cache" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <IntermediateAssembly Remove="obj\Debug\netstandard2.0\ClassLibrary.dll" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <_DebugSymbolsIntermediatePath Remove="obj\Debug\netstandard2.0\ClassLibrary.pdb" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <_DeploymentManifestEntryPoint Remove="obj\Debug\netstandard2.0\ClassLibrary.dll" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ApplicationManifest Remove="obj\Debug\netstandard2.0\Native.ClassLibrary.manifest" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <DeployManifest Remove="obj\Debug\netstandard2.0\ClassLibrary.application" />
-  </ItemGroup>
+  <PropertyGroup>
+    <CodeAnalysisRuleSet>..\..\ruleset.xml</CodeAnalysisRuleSet>
+    <DocumentationFile>$(OutputPath)$(AssemblyName).xml</DocumentationFile>
+  </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.3" />
-    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" />
+    <AdditionalFiles Include="..\..\stylecop.json" />
   </ItemGroup>
 
 </Project>

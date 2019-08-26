@@ -1,11 +1,23 @@
-﻿using System;
+﻿//--------------------------------------------------------------------------------
+// <copyright file="Program.cs" company="Universidad Católica del Uruguay">
+//     Copyright (c) Programación II. Derechos reservados.
+// </copyright>
+//--------------------------------------------------------------------------------
+
+using System;
 using ClassLibrary;
 
 namespace ConsoleApplication
 {
-    class Program
+    /// <summary>
+    /// Programa de consola de demostración.
+    /// </summary>
+    public static class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// Punto de entrada al programa principal.
+        /// </summary>
+        public static void Main()
         {
             var train = new Train();
             train.StartEngines();
