@@ -9,8 +9,13 @@
 7. Una solución que referencia todos los proyectos de C#
 8. Tareas preconfiguradas para compilar y ejecutar los proyectos de consola y de pruebas desde VSCode en la carpeta `.vscode`
 
+## Convenciones
 
-# Dónde encontrar información sobre los errores/avisos al compilar
+[Convenciones de código en C#](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions)
+
+[Convenciones de nombres en C#](https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/naming-guidelines)
+
+## Dónde encontrar información sobre los errores/avisos al compilar
 
 [C# Compiler Errors (CS*)](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-messages/)
 
