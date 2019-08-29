@@ -9,6 +9,8 @@
 7. Una solución que referencia todos los proyectos de C#
 8. Tareas preconfiguradas para compilar y ejecutar los proyectos de consola y de pruebas desde VSCode en la carpeta `.vscode`
 
+Vean este 🎥 [video](https://vimeo.com/356678159) que explica el funcionamiento de la plantilla.
+
 ## Convenciones
 
 [Convenciones de código en C#](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions)
