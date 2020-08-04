@@ -23,10 +23,10 @@ jobs:
       run: dotnet build --configuration Release --no-restore
     - name: Test
       run: dotnet test --no-restore --verbosity normal
-     - uses: nikeee/docfx-action@v1.0.0
+    - uses: nikeee/docfx-action@v1.0.0
       name: Build Documentation
-      with:
-        args: ../../docs/docfx.json
+        with:
+          args: ../../docs/docfx.json
     - uses: maxheld83/ghpages@master
       name: Publish Documentation on GitHub Pages
       env:
