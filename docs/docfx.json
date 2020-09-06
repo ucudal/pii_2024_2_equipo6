@@ -6,7 +6,7 @@
           "files": [
             "**/**.csproj"
           ],
-          "src": "../src"
+          "src":"../src"
         }
       ],
       "dest": "api",
@@ -45,11 +45,11 @@
         ],
         "exclude": [
           "obj/**",
-          "site-doc/**"
+          "docs/**"
         ]
       }
     ],
-    "dest": "site-doc",
+    "dest": "docs",
     "globalMetadataFiles": [],
     "fileMetadataFiles": [],
     "template": [
