@@ -18,65 +18,53 @@ jobs:
     needs: checkout
     runs-on: windows-latest
     steps:
-      - name: Setup .NET 5.0
-      uses: actions/setup-dotnet@v1
+    - name: Setup .NET 5.0
+    uses: actions/setup-dotnet@v1
+    with:
+      dotnet-version: 5.0.201
+    - name: Setup DocFX
+      uses: crazy-max/ghaction-chocolatey@v1
       with:
-        dotnet-version: 5.0.201
-      - name: Setup DocFX
-        uses: crazy-max/ghaction-chocolatey@v1
-        with:
-          args: install docfx
+        args: install docfx
   
   dependencies:
     needs: setup
     runs-on: windows-latest
     steps:
-      - name: Installing dependencies...
-      run: dotnet restore
+    - name: Installing dependencies...
+    run: dotnet restore
 
   build:      
     needs: dependencies
     runs-on: windows-latest
     steps:
-      - name: Building...
-      - run: dotnet build --configuration Release --no-restore
+    - name: Building...
+    - run: dotnet build --configuration Release --no-restore
 
   test:      
     needs: build
     runs-on: windows-latest
     steps:
-      - name: Test
-      run: dotnet test --no-restore --verbosity normal
+    - name: Test
+    run: dotnet test --no-restore --verbosity normal
 
   build_docs:      
     needs: test
     runs-on: windows-latest
     steps:
-      - name: DocFX Build...
-        working-directory: docs
-        run: docfx docs/docfx.json
-        continue-on-error: false
+    - name: DocFX Build...
+      working-directory: docs
+      run: docfx docs/docfx.json
+      continue-on-error: false
 
   publish_docs:
     needs: build_docs
     runs-on: windows-latest
     steps:
-      - name: Publish
-        if: github.event_name == 'push'
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: docs/_site
-          force_orphan: true
-  
-
-
-    - uses: nikeee/docfx-action@v1.0.0
-      name: Build Documentation
+    - name: Publish
+      if: github.event_name == 'push'
+      uses: peaceiris/actions-gh-pages@v3
       with:
-        args: docs/docfx.json
-    - uses: maxheld83/ghpages@master
-      name: Publish Documentation on GitHub Pages
-      env:
-        BUILD_DIR: docs
-        GH_PAT: ${{ secrets.GH_PAT }} # See https://github.com/maxheld83/ghpages
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: docs/_site
+        force_orphan: true
