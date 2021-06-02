@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "test",
-                "${workspaceFolder}/test/NUnitTestProject",
+                "${workspaceFolder}/src/test/NUnitTestProject",
                 "/property:GenerateFullPaths=true",
                 "/p:CollectCoverage=true",
                 "/p:CoverletOutputFormat=lcov",
@@ -53,16 +53,6 @@
                 "${workspaceFolder}/src/ConsoleApplication/ConsoleApplication.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
-            ],
-            "problemMatcher": "$msCompile"
-        },
-        {
-            "label": "doc",
-            "command": "docfx",
-            "type": "process",
-            "args": [
-                "${workspaceFolder}/docs/docfx.json",
-                "--serve"
             ],
             "problemMatcher": "$msCompile"
         }
