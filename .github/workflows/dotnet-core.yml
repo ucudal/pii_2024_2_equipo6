@@ -21,7 +21,7 @@ jobs:
         with:
           dotnet-version: 5.0.201
 
-      - name: Setup Doxygen...
+      - name: Setup Doxygen
         run: sudo apt-get install -y doxygen
 
       - name: Installing dependencies...
