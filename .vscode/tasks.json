@@ -7,39 +7,19 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/src/ConsoleApplication/ConsoleApplication.csproj",
+                "${workspaceFolder}",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "test",
+            "label": "clean",
             "command": "dotnet",
             "type": "process",
             "args": [
-                "test",
-                "${workspaceFolder}/src/test/NUnitTestProject",
-                "/property:GenerateFullPaths=true",
-                "/p:CollectCoverage=true",
-                "/p:CoverletOutputFormat=lcov",
-                "/p:CoverletOutput=lcov.info"
-            ],
-            "problemMatcher": "$msCompile",
-            "group": {
-                "kind": "test",
-                "isDefault": true
-            }
-        },
-        {
-            "label": "publish",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "publish",
-                "${workspaceFolder}/src/ConsoleApplication/ConsoleApplication.csproj",
-                "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
+                "clean",
+                "${workspaceFolder}"
             ],
             "problemMatcher": "$msCompile"
         },
@@ -53,6 +33,31 @@
                 "${workspaceFolder}/src/ConsoleApplication/ConsoleApplication.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "docs",
+            "command": "doxygen",
+            "type": "process",
+            "args": [
+                "${workspaceFolder}/docs/Doxyfile"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/docs"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "test",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "test",
+                "${workspaceFolder}/test/NUnitTestProject/NUnitTestProject.csproj",
+                "/p:CollectCoverage=true",
+                "/p:CoverletOutputFormat=lcov",
+                "/p:CoverletOutput=lcov.info"
             ],
             "problemMatcher": "$msCompile"
         }
