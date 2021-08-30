@@ -29,12 +29,12 @@ namespace ClassLibrary
         {
             if (this.IsEngineStarted)
             {
-                Console.Write("The engines are already running");
+                Console.WriteLine("The engines are already running");
                 return false;
             }
 
             this.IsEngineStarted = true;
-            Console.Write("Engines on");
+            Console.WriteLine("Engines on");
             return true;
         }
 
@@ -49,11 +49,11 @@ namespace ClassLibrary
             if (this.IsEngineStarted)
             {
                 this.IsEngineStarted = false;
-                Console.Write("Engines off");
+                Console.WriteLine("Engines off");
                 return true;
             }
 
-            Console.Write("The engines are already stopped");
+            Console.WriteLine("The engines are already stopped");
             return this.IsEngineStarted;
         }
     }
