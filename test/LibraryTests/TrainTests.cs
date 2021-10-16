@@ -1,5 +1,5 @@
 //--------------------------------------------------------------------------------
-// <copyright file="TestExample.cs" company="Universidad Católica del Uruguay">
+// <copyright file="TrainTests.cs" company="Universidad Católica del Uruguay">
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
@@ -13,7 +13,7 @@ namespace Tests
     /// Prueba de la clase <see cref="Train"/>.
     /// </summary>
     [TestFixture]
-    public class TestExample
+    public class TrainTests
     {
         /// <summary>
         /// El tren para probar.

@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{454AD4A3-D1D1-43AC-B1E9-AA3BDE115E4D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApplication", "src\ConsoleApplication\ConsoleApplication.csproj", "{BBDCC081-34D8-4CB3-AFB3-2B8C2B2CDFC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Program", "src\Program\Program.csproj", "{BBDCC081-34D8-4CB3-AFB3-2B8C2B2CDFC0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassLibrary", "src\ClassLibrary\ClassLibrary.csproj", "{6F057E84-10CD-45DE-8820-3D4B818C6EE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library", "src\Library\Library.csproj", "{6F057E84-10CD-45DE-8820-3D4B818C6EE3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{BE2270FE-A632-420B-9CEC-3177528BF1A1}"
 	ProjectSection(SolutionItems) = preProject
@@ -16,7 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{BE2270FE-A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{4609408A-2219-49AA-87F2-4A5D8B0B25F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitTestProject", "test\NUnitTestProject\NUnitTestProject.csproj", "{C5A5123B-F975-417F-948C-EBAB197F5000}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryTests", "test\LibraryTests\LibraryTests.csproj", "{C5A5123B-F975-417F-948C-EBAB197F5000}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
