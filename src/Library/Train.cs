@@ -13,11 +13,13 @@ namespace ClassLibrary
     /// </summary>
     public class Train
     {
+        #pragma warning disable SA1623 // PropertySummaryDocumentationMustMatchAccessors
         /// <summary>
         /// Obtiene un valor que indica si las maquinas del tren han sido encendidas o no.
         /// </summary>
         /// <value><c>true</c> si las máquinas fueron encendidas, <c>false</c> en caso contrario.</value>
         public bool IsEngineStarted { get; private set; }
+        #pragma warning restore SA1623 // PropertySummaryDocumentationMustMatchAccessors
 
         /// <summary>
         /// Enciende las máquinas del tren.
