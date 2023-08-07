@@ -3,5 +3,6 @@
     "cSpell.language": "en,es",
     "cSpell.words": [
         "Doxify"
-    ]
+    ],
+    "dotnet.defaultSolution": "ProjectTemplate.sln"
 }

@@ -60,6 +60,10 @@
                 "/p:CoverletOutput=lcov.info"
             ],
             "problemMatcher": "$msCompile"
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
         }
     ]
 }

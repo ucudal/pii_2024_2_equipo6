@@ -1,23 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
   </PropertyGroup>
-
-  <PropertyGroup>
-    <CodeAnalysisRuleSet>..\..\.analyzers\Analyzers.ruleset</CodeAnalysisRuleSet>
+<PropertyGroup>
     <DocumentationFile>$(OutputPath)$(AssemblyName).xml</DocumentationFile>
   </PropertyGroup>
-
+  <PropertyGroup>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <AnalysisMode>All</AnalysisMode>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <AdditionalFiles Include="../../.analyzers/stylecop.json" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Library\Library.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.0.0" />
-    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" />
-    <AdditionalFiles Include="..\..\.analyzers\stylecop.json" />
-  </ItemGroup>
-
 </Project>
