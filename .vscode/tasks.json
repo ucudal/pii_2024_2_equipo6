@@ -59,7 +59,7 @@
                 "/p:CoverletOutputFormat=lcov",
                 "/p:CoverletOutput=lcov.info"
             ],
-            "problemMatcher": "$msCompile"
+            "problemMatcher": "$msCompile",
             "group": {
                 "kind": "test",
                 "isDefault": true
