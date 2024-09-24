@@ -9,7 +9,7 @@ on:
     branches: [ main ]
 
 jobs:
-  generate-docs:
+  build-test-generate-docs:
     runs-on: ubuntu-latest
 
     steps:
