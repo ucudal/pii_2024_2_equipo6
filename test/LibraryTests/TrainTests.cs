@@ -49,7 +49,7 @@ namespace Tests
             Assert.That(this.train, Is.Not.Null);
             this.train.StartEngines();
             this.train.StopEngines();
-            Assert.That(this.train.IsEngineStarted, Is.True);
+            Assert.That(this.train.IsEngineStarted, Is.False);
         }
     }
 }
