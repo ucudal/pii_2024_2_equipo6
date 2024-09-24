@@ -35,9 +35,9 @@ namespace Tests
         [Test]
         public void StartTrainTest()
         {
-            Assert.NotNull(this.train);
+            Assert.That(this.train, Is.Not.Null);
             this.train.StartEngines();
-            Assert.True(this.train.IsEngineStarted);
+            Assert.That(this.train.IsEngineStarted, Is.True);
         }
 
         /// <summary>
@@ -46,10 +46,10 @@ namespace Tests
         [Test]
         public void StopTrainTest()
         {
-            Assert.NotNull(this.train);
+            Assert.That(this.train, Is.Not.Null);
             this.train.StartEngines();
             this.train.StopEngines();
-            Assert.False(this.train.IsEngineStarted);
+            Assert.That(this.train.IsEngineStarted, Is.True);
         }
     }
 }
