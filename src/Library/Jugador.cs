@@ -11,7 +11,11 @@ public class Jugador
       get { return nombre; }
       set { nombre = value; }
    }
-   
+
+   public Jugador(string nombre)
+   {
+      this.nombre = nombre;
+   }
    public void ElegirPokemon(Pokemon pokemon)
    {
       if (pokemones.Count < 6)
