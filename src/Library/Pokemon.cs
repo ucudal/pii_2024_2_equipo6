@@ -25,6 +25,7 @@ public class Pokemon
     public double Hp
     {
         get { return hp; }
+        set { hp = value; }
     }
     public Tipo Tipo
     {

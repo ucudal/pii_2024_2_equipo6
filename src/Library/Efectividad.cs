@@ -4,7 +4,7 @@ public class Efectividad
 {
     // Tipos: Fuego, Agua, Planta, Eléctrico, Roca, Dragón.
     
-    private Dictionary<string, Dictionary<string, double>> TablaTipos = new()
+    public Dictionary<string, Dictionary<string, double>> TablaTipos = new()
     {
         {
             "Fuego",
@@ -55,4 +55,21 @@ public class Efectividad
             }
         },
     };
+
+    public double getEfectividad(Tipo atacante, Tipo receptor)
+    {
+        string tipoAtacante = atacante.ToString();
+        string tipoReceptor = receptor.ToString();
+
+        if (TablaTipos.ContainsKey(tipoAtacante))
+        {
+            var efectividades = TablaTipos[tipoAtacante];
+
+            if (efectividades.ContainsKey(tipoReceptor))
+            {
+                return efectividades[tipoReceptor];
+            }
+        } 
+        return 1.0;
+    }
 }

@@ -19,28 +19,11 @@ public class Jugador
          pokemones.Add(pokemon);
       }
    }
+   
 
-   public void CambiarPokemon(Pokemon pokemonelegido, Pokemon pokemonnuevo)
+   public Pokemon Pokemonelegido
    {
-         pokemones.Remove(pokemonelegido);
-         pokemones.Add(pokemonnuevo);
-   }
-
-   public void Atacar(Ataque ataque, Pokemon pokemonrival)
-   {
-      pokemonrival.Hp -= ataque;
-   }
-
-   public bool AtacarConEspecial(AtaqueEspecial ataqueEspecial, Pokemon pokemonrival)
-   {
-      if (ManejadorDeTurno.ContadorAtaqueEspecial = 0)
-      {
-         pokemonrival.Hp -= ataqueEspecial;
-         return true;
-      }
-      else
-      {
-         return false;
-      }
+      get { return pokemonelegido; }
+      set { pokemonelegido = value; }
    }
 }
