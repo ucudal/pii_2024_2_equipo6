@@ -6,6 +6,10 @@ public class Jugador
    private Pokemon pokemonelegido;
    private string nombre;
 
+   public Jugador(string nombre)
+   {
+      this.nombre = nombre;
+   }
    public string Nombre
    {
       get { return nombre; }
