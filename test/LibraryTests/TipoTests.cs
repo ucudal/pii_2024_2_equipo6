@@ -8,7 +8,7 @@ public class TipoTests
 {
     
         [Test]
-        public void Test_TipoConstructor()
+        public void TestTipoConstructor()
         {
             string nombre = "Fuego";
             Ataque ataque = new Ataque("Llamarada", 100);
@@ -22,7 +22,7 @@ public class TipoTests
         }
 
         [Test]
-        public void Test_AtaqueProperty()
+        public void TestAtaque()
         {
             Ataque ataqueInicial = new Ataque("Corte", 50);
             Ataque nuevoAtaque = new Ataque("Cuchillada", 75);
@@ -34,7 +34,7 @@ public class TipoTests
         }
 
         [Test]
-        public void Test_AtaqueEspecialProperty()
+        public void TestAtaqueEspecial()
         {
             AtaqueEspecial ataqueEspecialInicial = new AtaqueEspecial("Chispa", 60);
             AtaqueEspecial nuevoAtaqueEspecial = new AtaqueEspecial("Rayo", 90);
