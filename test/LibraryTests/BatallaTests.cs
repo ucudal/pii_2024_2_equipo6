@@ -26,7 +26,7 @@ namespace Tests
             jugador2.Pokemonelegido = pokemon2;
 
             batalla.Atacar(jugador1,jugador2);
-            Assert.That(jugador2.Pokemonelegido.Hp, Is.EqualTo(100));
+            Assert.That(jugador2.Pokemonelegido.Hp, Is.EqualTo(100)); //Comparacion
 
         }
     }
