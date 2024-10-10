@@ -58,16 +58,13 @@ public class Efectividad
 
     public double getEfectividad(Tipo atacante, Tipo receptor)
     {
-        string tipoAtacante = atacante.ToString();
-        string tipoReceptor = receptor.ToString();
-
-        if (TablaTipos.ContainsKey(tipoAtacante))
+        if (TablaTipos.ContainsKey(atacante.Nombre))
         {
-            var efectividades = TablaTipos[tipoAtacante];
+            var efectividades = TablaTipos[atacante.Nombre];
 
-            if (efectividades.ContainsKey(tipoReceptor))
+            if (efectividades.ContainsKey(receptor.Nombre))
             {
-                return efectividades[tipoReceptor];
+                return efectividades[receptor.Nombre];
             }
         } 
         return 1.0;
