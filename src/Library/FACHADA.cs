@@ -106,11 +106,6 @@ public class FACHADA
 
     public static void IniciarBatalla(Jugador jugador1, Jugador jugador2)
     {
-        if (jugador1.Pokemonelegido == null || jugador2.Pokemonelegido == null)
-        {
-            Console.WriteLine("Error:Ambos jugadores deben tener un Pokemón elegido antes de la batalla");
-            return;
-        }
 
         Batalla batalla = new Batalla(jugador1, jugador2);
         Efectividad efectividad = new Efectividad();
@@ -122,7 +117,7 @@ public class FACHADA
                 {
                     Console.WriteLine($"{jugador1.Nombre}, es tu turno de atacar");
                     batalla.Atacar(jugador1, jugador2);
-                    Console.WriteLine($"{jugador2.Pokemonelegido},HP:{jugador2.Pokemonelegido.Hp}");
+                    Console.WriteLine($"{jugador2.Pokemonelegido.Nombre},HP:{jugador2.Pokemonelegido.Hp}");
                     if (jugador2.Pokemonelegido.Hp <= 0)
                     {
                         Console.WriteLine($"{jugador2.Pokemonelegido.Nombre} fue derrotado");
@@ -136,7 +131,7 @@ public class FACHADA
                 {
                     Console.WriteLine($"{jugador2.Nombre}, es tu turno de atacar");
                     batalla.Atacar(jugador2, jugador1);
-                    Console.WriteLine($"{jugador1.Pokemonelegido},HP:{jugador1.Pokemonelegido.Hp}");
+                    Console.WriteLine($"{jugador1.Pokemonelegido.Nombre},HP:{jugador1.Pokemonelegido.Hp}");
                     if (jugador1.Pokemonelegido.Hp <= 0)
                     {
                         Console.WriteLine($"{jugador1.Pokemonelegido.Nombre} fue derrotado");
