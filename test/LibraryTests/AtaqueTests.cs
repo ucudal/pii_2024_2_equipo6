@@ -1,7 +1,6 @@
 using ProyectoPokemon;
 
 namespace Tests;
-using ClassLibrary;
 using NUnit.Framework;
 
 
