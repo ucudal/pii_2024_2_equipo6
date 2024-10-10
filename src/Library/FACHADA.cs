@@ -156,6 +156,16 @@ public class FACHADA
         }
         
     }
-}
+    public static void ElegirPokemonInicial(Jugador jugador)
+    {
+        for(int i=0;i<jugador.Pokemones.Count;i++)
+        {
+            Console.WriteLine($"{i+1}.{jugador.Pokemones[i].Nombre}(HP:{jugador.Pokemones[i].Hp},Tipo:{jugador.Pokemones[i].Tipo.Nombre})");
+        }
+        Console.WriteLine($"\n{jugador.Nombre}, elige tu pokemon para la batalla. Introduce el numero correspondiente");
+        int eleccion = int.Parse(Console.ReadLine());
+        jugador.Pokemonelegido =jugador.Pokemones[eleccion-1] ;
+    }
+}   
     
     
