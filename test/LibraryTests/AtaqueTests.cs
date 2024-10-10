@@ -4,14 +4,15 @@ namespace Tests;
 using ClassLibrary;
 using NUnit.Framework;
 
+
 public class AtaqueTests
 {
     [Test]
     public void TestAtaque()
     {
         Ataque ataque = new Ataque("Tacleada", 40);
-        Assert.Equals("Tacleada", ataque.Nombre);
-        Assert.Equals(40, ataque.ValorAtaque);
+        Assert.That("Tacleada", Is.EqualTo(ataque.Nombre));
+        Assert.That(40, Is.EqualTo(ataque.ValorAtaque));
     }
     [Test]
     public void TestAtaqueConstructor()
@@ -20,8 +21,8 @@ public class AtaqueTests
         int valorataque = 100;
         Ataque ataque = new Ataque(nombre, valorataque);
 
-        Assert.Equals(nombre, ataque.Nombre);
-        Assert.Equals(valorataque, ataque.ValorAtaque);
+        Assert.That(nombre, Is.EqualTo(ataque.Nombre));
+        Assert.That(valorataque, Is.EqualTo(ataque.ValorAtaque));
     }
 
     [Test]
@@ -30,7 +31,7 @@ public class AtaqueTests
         Ataque ataque = new Ataque("Corte", 50);
         ataque.ValorAtaque = 75;
             
-        Assert.Equals(75, ataque.ValorAtaque);
+        Assert.That(75, Is.EqualTo(ataque.ValorAtaque));
     }
 
     [Test]
@@ -39,7 +40,7 @@ public class AtaqueTests
         Ataque ataque = new Ataque("Corte", 50);
         ataque.Nombre = "Cuchillada";
             
-        Assert.Equals("Cuchillada", ataque.Nombre);
+        Assert.That("Cuchillada", Is.EqualTo(ataque.Nombre));
     }
 
     
