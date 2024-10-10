@@ -19,11 +19,28 @@ public class Jugador
          pokemones.Add(pokemon);
       }
    }
-   
+
+   public List<Pokemon> Pokemones
+   {
+      get { return pokemones; }
+   }
 
    public Pokemon Pokemonelegido
    {
       get { return pokemonelegido; }
       set { pokemonelegido = value; }
+   }
+
+   public bool TienePokemonVivos()
+   {
+      foreach (var pokemon in pokemones)
+      {
+         if (pokemon.Hp > 0)
+         {
+            return true;
+         }
+      }
+
+      return false;
    }
 }
