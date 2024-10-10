@@ -6,6 +6,11 @@ public class Jugador
    private Pokemon pokemonelegido;
    private string nombre;
 
+   public List<Pokemon> Pokemones
+   {
+      get { return pokemones; }
+   }
+
    public string Nombre
    {
       get { return nombre; }
