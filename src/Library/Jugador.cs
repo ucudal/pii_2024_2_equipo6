@@ -33,14 +33,6 @@ public class Jugador
 
    public bool TienePokemonVivos()
    {
-      foreach (var pokemon in pokemones)
-      {
-         if (pokemon.Hp > 0)
-         {
-            return true;
-         }
-      }
-
-      return false;
+      return Pokemonelegido != null && Pokemonelegido.Hp > 0;
    }
 }
