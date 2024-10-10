@@ -34,7 +34,7 @@ public class Batalla
             turno = !turno;
         }
 
-        if (atacante == jugador2 && !turno)
+        else if (atacante == jugador2 && !turno)
         {
             receptor.Pokemonelegido.Hp -= atacante.Pokemonelegido.Ataque.ValorAtaque * efectividad;
             contador2 -= 1;
@@ -59,7 +59,7 @@ public class Batalla
             turno = !turno;
         }
 
-        if (atacante == jugador2 && !turno && contador2 <= 0)
+        else if (atacante == jugador2 && !turno && contador2 <= 0)
         {
             receptor.Pokemonelegido.Hp -= atacante.Pokemonelegido.AtaqueEspecial.ValorAtaqueEspecial * efectividad;
             contador2 = 2;
