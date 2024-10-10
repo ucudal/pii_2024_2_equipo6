@@ -9,8 +9,8 @@ public class Program
    {
       FACHADA fachada = new FACHADA();
       List<Pokemon> catalogo = fachada.ObtenerCatalogo();
-      Jugador jugador1 = new Jugador();
-      Jugador jugador2 = new Jugador();
+      Jugador jugador1 = new Jugador("");
+      Jugador jugador2 = new Jugador("");
       Console.WriteLine("\nJugador1, Ingresa su nombre");
       jugador1.Nombre = Console.ReadLine();
       Console.WriteLine("Catalogo de Pokemon:");
