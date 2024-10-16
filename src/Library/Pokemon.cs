@@ -5,16 +5,14 @@ public class Pokemon
     private string nombre;
     private double hp;
     private Tipo tipo;
-    private Ataque ataque;
-    private AtaqueEspecial ataqueEspecial;
+    private List<Ataque> ataques;
     
     public Pokemon(string nombre, double hp, Tipo tipo)
     {
         this.nombre = nombre;
         this.hp = hp;
         this.tipo = tipo;
-        this.ataque = tipo.Ataque;
-        this.ataqueEspecial = tipo.AtaqueEspecial;
+        this.ataques = tipo.Ataques;
     }
     
     public string Nombre
@@ -33,15 +31,11 @@ public class Pokemon
         set { tipo = value; }
     }
     
-    public Ataque Ataque
+    public List<Ataque> Ataques
     {
-        get { return ataque; }
-        set { ataque = value; }
+        get { return ataques; }
+        set { ataques = value; }
     }
-    public AtaqueEspecial AtaqueEspecial
-    {
-        get { return ataqueEspecial; }
-        set { ataqueEspecial = value; }
-    }
+    
     
 }
