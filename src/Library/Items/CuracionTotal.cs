@@ -1,6 +1,8 @@
+using ProyectoPokemon.Interfaces;
+
 namespace ProyectoPokemon.Items;
 
-public class CuracionTotal
+public class CuracionTotal : IItems
 {
     public string Nombre { get; set; }
 
