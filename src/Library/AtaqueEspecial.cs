@@ -1,25 +1,21 @@
+using ProyectoPokemon.Interfaces;
+
 namespace ProyectoPokemon;
 
-public class AtaqueEspecial
+public class AtaqueEspecial : Ataque
 {
-    private int valorataqueespecial;
-    public int ValorAtaqueEspecial
+    private IEfecto efecto;
+    public IEfecto Efecto
     {
-        get{return valorataqueespecial;}
-        set{valorataqueespecial = value; }
+        get { return efecto; }
+        set { efecto = value; }
     }
+    
+    
 
-    private string nombre;
-
-    public string Nombre
+    public AtaqueEspecial(string nombre, int valorataqueespecial, IEfecto efecto)
+    : base(nombre, valorataqueespecial)
     {
-        get { return nombre; }
-        set { nombre = value;}
-    }
-
-    public AtaqueEspecial(string nombre, int valorataqueespecial)
-    {
-        this.nombre = nombre;
-        this.valorataqueespecial = valorataqueespecial;
+        this.efecto = efecto;
     }
 }
