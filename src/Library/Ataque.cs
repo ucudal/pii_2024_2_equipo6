@@ -2,14 +2,14 @@ namespace ProyectoPokemon;
 
 public class Ataque
 {
-    private int valorataque;
+    protected int valorataque;
     public int ValorAtaque
     {
         get{return valorataque;}
         set{valorataque = value; }
     }
 
-    private string nombre;
+    protected string nombre;
 
     public string Nombre
     {
