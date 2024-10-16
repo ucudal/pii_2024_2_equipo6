@@ -1,3 +1,5 @@
+using ProyectoPokemon.Interfaces;
+
 namespace ProyectoPokemon;
 
 public class Jugador
@@ -5,6 +7,7 @@ public class Jugador
    private List<Pokemon> pokemones = new List<Pokemon>();
    private Pokemon pokemonelegido;
    private string nombre;
+   private List<IItems> items = new List<IItems>();
 
    public Jugador(string nombre)
    {
