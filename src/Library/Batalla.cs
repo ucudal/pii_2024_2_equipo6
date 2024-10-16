@@ -54,14 +54,14 @@ public class Batalla
         double efectividad = efec.getEfectividad(atacante.Pokemonelegido.Tipo, receptor.Pokemonelegido.Tipo);
         if (atacante == jugador1 && turno && contador1 <= 0)
         {
-            receptor.Pokemonelegido.Hp -= atacante.Pokemonelegido.AtaqueEspecial.ValorAtaqueEspecial * efectividad;
+            receptor.Pokemonelegido.Hp -= atacante.Pokemonelegido.AtaqueEspecial.ValorAtaque * efectividad;
             contador1 = 2;
             turno = !turno;
         }
 
         else if (atacante == jugador2 && !turno && contador2 <= 0)
         {
-            receptor.Pokemonelegido.Hp -= atacante.Pokemonelegido.AtaqueEspecial.ValorAtaqueEspecial * efectividad;
+            receptor.Pokemonelegido.Hp -= atacante.Pokemonelegido.AtaqueEspecial.ValorAtaque * efectividad;
             contador2 = 2;
             turno = !turno;
         }

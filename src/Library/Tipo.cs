@@ -3,14 +3,11 @@ namespace ProyectoPokemon;
 public class Tipo
 {
     private string nombre;
-    private Ataque ataque;
-    private AtaqueEspecial ataqueEspecial;
-    public Tipo(string Nombre, Ataque ataque, AtaqueEspecial ataqueEspecial)
+    private List<Ataque> ataques;
+    public Tipo(string Nombre)
     {
+        ataques = new List<Ataque>();
         this.nombre = Nombre;
-        this.ataque = ataque;
-        this.ataqueEspecial = ataqueEspecial;
-        
     }
     public string Nombre
     { 
@@ -20,27 +17,17 @@ public class Tipo
         }
     }
 
-    public Ataque Ataque
+    public List<Ataque> Ataques
     {
-        get
-        {
-            return ataque;
-        }
-        set
-        {
-            ataque = value;
-        }
+        get { return ataques; }
     }
-    public AtaqueEspecial AtaqueEspecial
+
+    public void AddAtaque(Ataque ataque)
     {
-        get 	
-        {
-            return ataqueEspecial;
-        }
-        set
-        {
-            ataqueEspecial = value;
-        }
-        
+        ataques.Add(ataque);
+    }
+    public void RemoveAtaque(Ataque ataque)
+    {
+        ataques.Remove(ataque);
     }
 }
