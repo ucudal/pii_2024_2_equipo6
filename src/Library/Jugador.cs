@@ -1,3 +1,6 @@
+using ProyectoPokemon.Interfaces;
+using ProyectoPokemon.Items;
+
 namespace ProyectoPokemon;
 
 public class Jugador
@@ -5,10 +8,18 @@ public class Jugador
    private List<Pokemon> pokemones = new List<Pokemon>();
    private Pokemon pokemonelegido;
    private string nombre;
+   private List<IItems> items = new List<IItems>();
 
    public Jugador(string nombre)
    {
       this.nombre = nombre;
+      items.Add(new Revivir());
+      items.Add(new SuperPocion());
+      items.Add(new SuperPocion());
+      items.Add(new SuperPocion());
+      items.Add(new SuperPocion());
+      items.Add(new CuracionTotal());
+      items.Add(new CuracionTotal());
    }
    public string Nombre
    {
