@@ -6,17 +6,17 @@ public class Pokemon
     private double hp;
     private Tipo tipo;
     private List<IAtaque> ataques = new List<IAtaque>();
-    private List<AtaqueComun> AtaquesComunes = new List<AtaqueComun>();
-    private List<AtaqueEspecial> AtaqueEspeciales = new List<AtaqueEspecial>();
+    public List<AtaqueComun> AtaquesComunes { get; set; } = new List<AtaqueComun>(); 
+    private List<AtaqueEspecial> AtaqueEspeciales { get; set; } = new List<AtaqueEspecial>();
     public Pokemon(string nombre, double hp, Tipo tipo)
     {
         this.nombre = nombre;
         this.hp = hp;
         this.tipo = tipo;
-        this.ataquesComunes = Tipo.AtaquesComunes;
-        this.ataqueEspeciales = Tipo.AtaquesEspeciales;
-        this.Ataques.Add(AtaqueEspeciales[0]);
-        this.Ataques.Add(AtaquesComunes[0]);
+        this.AtaquesComunes = Tipo.AtaquesComunes;
+        this.AtaqueEspeciales = Tipo.AtaquesEspeciales;
+        this.Ataques.AddRange(AtaqueEspeciales);
+        this.Ataques.AddRange(AtaquesComunes);
     }
     
     public string Nombre

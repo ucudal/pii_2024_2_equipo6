@@ -3,10 +3,12 @@ namespace ProyectoPokemon;
 public class Tipo
 {
     private string nombre;
-    private List<Ataque> ataques;
-    public Tipo(string Nombre)
+    private List<IAtaque> ataques = new List<IAtaque>();
+    public List<AtaqueComun> AtaquesComunes { get; set; } = new List<AtaqueComun>();
+    public List<AtaqueEspecial> AtaquesEspeciales { get; set; } = new List<AtaqueEspecial>();
+    public Tipo(string Nombre, List<IAtaque> Ataques)
     {
-        ataques = new List<Ataque>();
+        AgregarAtaques(Ataques);
         this.nombre = Nombre;
     }
     public string Nombre
@@ -17,17 +19,25 @@ public class Tipo
         }
     }
 
-    public List<Ataque> Ataques
+    public List<IAtaque> Ataques
     {
         get { return ataques; }
     }
 
-    public void AddAtaque(Ataque ataque)
+    private void AgregarAtaques(List<IAtaque> ataques)
     {
-        ataques.Add(ataque);
+        foreach (var ataque in ataques)
+        {
+            if (ataque is AtaqueComun ataqueComun)
+            {
+                AtaquesComunes.Add(ataqueComun);
+            }
+            else if (ataque is AtaqueEspecial ataqueEspecial)
+            {
+                AtaquesEspeciales.Add(ataqueEspecial);
+            }
+        }
+
     }
-    public void RemoveAtaque(Ataque ataque)
-    {
-        ataques.Remove(ataque);
-    }
+    
 }
