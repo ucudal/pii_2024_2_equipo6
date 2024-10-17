@@ -7,6 +7,8 @@ public class Batalla
     private int contador2 = 2;
     private Jugador jugador1;
     private Jugador jugador2;
+    private int contadorEfecto1 = 0;
+    private int contadorEfecto2 = 0;
     
 
     public Batalla(Jugador jugador1, Jugador jugador2)
@@ -56,14 +58,29 @@ public class Batalla
         {
             receptor.Pokemonelegido.Hp -= atacante.Pokemonelegido.AtaqueEspecial.ValorAtaque * efectividad;
             contador1 = 2;
+            contadorEfecto1 -= 1;
             turno = !turno;
+            //Chequeo si pasaron los turnos necesarios para poder aplicar el efecto
+            if (contadorEfecto1 <= 0)
+            {
+            //Aplico el efecto  y reseteo el contador de efecto    
+                contadorEfecto1 = atacante.Pokemonelegido.AtaqueEspecial.Efecto.contador;
+                
+            } 
         }
 
         else if (atacante == jugador2 && !turno && contador2 <= 0)
         {
             receptor.Pokemonelegido.Hp -= atacante.Pokemonelegido.AtaqueEspecial.ValorAtaque * efectividad;
             contador2 = 2;
+            contadorEfecto2 -= 1;
             turno = !turno;
+            //Chequeo si pasaron los turnos necesarios para poder aplicar el efecto
+            if (contadorEfecto2 <= 0)
+            { 
+                //Aplico el efecto  y reseteo el contador de efecto
+                contadorEfecto2 = atacante.Pokemonelegido.AtaqueEspecial.Efecto.contador;
+            }
         }
         else
         {
