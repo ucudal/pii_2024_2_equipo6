@@ -4,5 +4,6 @@ public interface IEfecto
 {
     public string Nombre { get; set; }
     
-    public void AplicarEfecto();
+    public void AplicarEfecto(Jugador receptor);
+    
 }
