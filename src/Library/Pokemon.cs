@@ -1,3 +1,6 @@
+using System.Reflection.Metadata;
+using ProyectoPokemon.Interfaces;
+
 namespace ProyectoPokemon;
 
 public class Pokemon
@@ -6,6 +9,13 @@ public class Pokemon
     private double hp;
     private Tipo tipo;
     private List<IAtaque> ataques = new List<IAtaque>();
+    public bool EstaEnvenenado { get; set; }
+    public bool EstaDormido { get; set; }
+    public bool EstaQuemado { get; set; }
+    public  bool EstaParalizado { get; set; }
+    public bool TieneEstadoEspecial { get; set; }
+    public int TurnosDormido { get; set; }
+    public IEfecto EfectoActual { get; set; }
     public List<AtaqueComun> AtaquesComunes { get; set; } = new List<AtaqueComun>(); 
     private List<AtaqueEspecial> AtaqueEspeciales { get; set; } = new List<AtaqueEspecial>();
     public Pokemon(string nombre, double hp, Tipo tipo)
@@ -17,6 +27,7 @@ public class Pokemon
         this.AtaqueEspeciales = Tipo.AtaquesEspeciales;
         this.Ataques.AddRange(AtaqueEspeciales);
         this.Ataques.AddRange(AtaquesComunes);
+        TurnosDormido = 0;
     }
     
     public string Nombre
