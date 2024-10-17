@@ -2,20 +2,24 @@ using ProyectoPokemon.Interfaces;
 
 namespace ProyectoPokemon;
 
-public class AtaqueEspecial : Ataque
+public class AtaqueEspecial : IAtaque
 {
-    private IEfecto efecto;
+    public string Nombre { get; set; }
+    public int ValorAtaque { get; set; }
+
     public IEfecto Efecto
     {
-        get { return efecto; }
-        set { efecto = value; }
+        get { return Efecto; }
+        set { Efecto = value; }
     }
     
     
 
     public AtaqueEspecial(string nombre, int valorataqueespecial, IEfecto efecto)
-    : base(nombre, valorataqueespecial)
     {
-        this.efecto = efecto;
+        this.Nombre = nombre + " (Especial)";
+        this.ValorAtaque = valorataqueespecial;
+        this.Efecto = efecto;
     }
+    
 }
