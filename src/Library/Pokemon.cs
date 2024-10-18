@@ -14,14 +14,16 @@ public class Pokemon
     public bool EstaQuemado { get; set; }
     public  bool EstaParalizado { get; set; }
     public bool TieneEstadoEspecial { get; set; }
-    public int TurnosDormido { get; set; }
+    public double  TurnosDormido { get; set; }
     public IEfecto EfectoActual { get; set; }
+    public double VidaMaxima { get; set; }
     public List<AtaqueComun> AtaquesComunes { get; set; } = new List<AtaqueComun>(); 
     private List<AtaqueEspecial> AtaqueEspeciales { get; set; } = new List<AtaqueEspecial>();
     public Pokemon(string nombre, double hp, Tipo tipo)
     {
         this.nombre = nombre;
-        this.hp = hp;
+        this.hp =VidaMaxima ;
+        this.VidaMaxima = hp;
         this.tipo = tipo;
         this.AtaquesComunes = Tipo.AtaquesComunes;
         this.AtaqueEspeciales = Tipo.AtaquesEspeciales;
