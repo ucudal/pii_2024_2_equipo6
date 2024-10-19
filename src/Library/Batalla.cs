@@ -41,16 +41,50 @@ public class Batalla
         double efectividad = efec.getEfectividad(atacante.Pokemonelegido.Tipo, receptor.Pokemonelegido.Tipo);
         if (atacante == jugador1 && turno)
         {
-            receptor.Pokemonelegido.Hp -= atacante.Pokemonelegido.Ataque.ValorAtaque * efectividad;
-            contador1 -= 1;
-            turno = !turno;
-        }
+            if (random.NextDouble() * 100 > 49)
+            {
+                if (random.NextDouble() * 100 > 9)
+                {
 
+                    receptor.Pokemonelegido.Hp -= (atacante.Pokemonelegido.Ataque.ValorAtaque * efectividad) * 0.2;
+                    contador1 -= 1;
+                    turno = !turno;
+                }
+                else
+                {
+
+                    receptor.Pokemonelegido.Hp -= atacante.Pokemonelegido.Ataque.ValorAtaque * efectividad;
+                    contador1 -= 1;
+                    turno = !turno;
+                }
+
+            }
+        }
+        
         else if (atacante == jugador2 && !turno)
         {
-            receptor.Pokemonelegido.Hp -= atacante.Pokemonelegido.Ataque.ValorAtaque * efectividad;
-            contador2 -= 1;
-            turno = !turno;
+            if (random.NextDouble() * 100 > 49)
+            {
+                if (random.NextDouble() * 100 > 9)
+                {
+                    receptor.Pokemonelegido.Hp -= (atacante.Pokemonelegido.Ataque.ValorAtaque * efectividad) * 0.20;
+
+                    contador2 -= 1;
+                    turno = !turno;
+                }
+                else
+                {
+                    receptor.Pokemonelegido.Hp -= atacante.Pokemonelegido.Ataque.ValorAtaque * efectividad;
+
+                    contador2 -= 1;
+                    turno = !turno;
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("Su precision falló, turno perdido.");
+            }
         }
         else
         {
@@ -306,34 +340,6 @@ public class Batalla
                $"DESEA USAR ALGUNO DE ESTOS ITEMS PARA{jugador.Pokemonelegido.Nombre}, su Hp es: {jugador.Pokemonelegido.Hp}");
            respuesta = Console.ReadLine();
        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
    }                                                                                                                                         
        
 
