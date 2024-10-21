@@ -37,6 +37,7 @@ public class Batalla
 
     public void Atacar(Jugador atacante, Jugador receptor)
     {
+        atacante.Pokemonelegido.MostrarAtaques();
         Efectividad efec = new Efectividad();
         double efectividad = efec.getEfectividad(atacante.Pokemonelegido.Tipo, receptor.Pokemonelegido.Tipo);
         if (atacante == jugador1 && turno)
@@ -96,6 +97,7 @@ public class Batalla
 
     public void AtacarConEspecial(Jugador atacante, Jugador receptor)
     {
+        atacante.Pokemonelegido.MostrarAtaques();
         Efectividad efec = new Efectividad();
         double efectividad = efec.getEfectividad(atacante.Pokemonelegido.Tipo, receptor.Pokemonelegido.Tipo);
         if (atacante == jugador1 && turno && contador1 <= 0)
