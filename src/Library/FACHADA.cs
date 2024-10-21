@@ -12,8 +12,7 @@ public class FACHADA
         Tipo tipoFuego = new Tipo("Fuego", new Ataque("Llamarada", 100), new AtaqueEspecial("Inferno", 120));
         Tipo tipoVolador = new Tipo("Volador", new Ataque("Tornado", 80), new AtaqueEspecial("Huracán", 110));
         Tipo tipoAgua = new Tipo("Agua", new Ataque("Aqua Jet", 60), new AtaqueEspecial("Hidrobomba", 130));
-        Tipo tipoElectrico = new Tipo("Electrico",
-            new Ataque("Electric bombard", 50), new AtaqueEspecial("Eelctrico con filos", 100));
+        Tipo tipoElectrico = new Tipo("Electrico", new Ataque("Electric bombard", 50), new AtaqueEspecial("Eelctrico con filos", 100));
 
         catalogo.Add(new Pokemon("Charizard", 266, tipoFuego));
         catalogo.Add(new Pokemon("Blastoise", 268, tipoAgua));
@@ -111,7 +110,7 @@ public class FACHADA
             Console.WriteLine("Error:Ambos jugadores deben tener un Pokemón elegido antes de la batalla");
             return;
         }
-
+        
         Batalla batalla = new Batalla(jugador1, jugador2);
         Efectividad efectividad = new Efectividad();
         while (jugador1.TienePokemonVivos() && jugador2.TienePokemonVivos())
