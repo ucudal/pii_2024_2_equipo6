@@ -58,7 +58,7 @@ public class Pokemon
     {
         foreach (var ataque in Ataques)
         {
-           Console.WriteLine($"Nombre= {ataque.Nombre}/n Valor de ataque= {ataque.ValorAtaque}"); 
+           Console.WriteLine($"Nombre= {ataque.Nombre}\n Valor de ataque= {ataque.ValorAtaque}"); 
         }
     }
     
