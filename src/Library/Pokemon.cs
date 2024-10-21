@@ -53,6 +53,13 @@ public class Pokemon
         get { return ataques; }
         set { ataques = value; }
     }
-    
+
+    public void MostrarAtaques()
+    {
+        foreach (var ataque in Ataques)
+        {
+           Console.WriteLine($"Nombre= {ataque.Nombre}/n Valor de ataque= {ataque.ValorAtaque}"); 
+        }
+    }
     
 }
