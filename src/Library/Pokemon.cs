@@ -1,3 +1,6 @@
+using System.Reflection.Metadata;
+using ProyectoPokemon.Interfaces;
+
 namespace ProyectoPokemon;
 
 public class Pokemon
@@ -5,16 +8,28 @@ public class Pokemon
     private string nombre;
     private double hp;
     private Tipo tipo;
-    private Ataque ataque;
-    private AtaqueEspecial ataqueEspecial;
-    
+    private List<IAtaque> ataques = new List<IAtaque>();
+    public bool EstaEnvenenado { get; set; }
+    public bool EstaDormido { get; set; }
+    public bool EstaQuemado { get; set; }
+    public  bool EstaParalizado { get; set; }
+    public bool TieneEstadoEspecial { get; set; }
+    public double  TurnosDormido { get; set; }
+    public IEfecto EfectoActual { get; set; }
+    public double VidaMaxima { get; set; }
+    public List<AtaqueComun> AtaquesComunes { get; set; } = new List<AtaqueComun>(); 
+    private List<AtaqueEspecial> AtaqueEspeciales { get; set; } = new List<AtaqueEspecial>();
     public Pokemon(string nombre, double hp, Tipo tipo)
     {
         this.nombre = nombre;
-        this.hp = hp;
+        this.hp =VidaMaxima ;
+        this.VidaMaxima = hp;
         this.tipo = tipo;
-        this.ataque = tipo.Ataque;
-        this.ataqueEspecial = tipo.AtaqueEspecial;
+        this.AtaquesComunes = Tipo.AtaquesComunes;
+        this.AtaqueEspeciales = Tipo.AtaquesEspeciales;
+        this.Ataques.AddRange(AtaqueEspeciales);
+        this.Ataques.AddRange(AtaquesComunes);
+        TurnosDormido = 0;
     }
     
     public string Nombre
@@ -33,15 +48,18 @@ public class Pokemon
         set { tipo = value; }
     }
     
-    public Ataque Ataque
+    public List<IAtaque> Ataques
     {
-        get { return ataque; }
-        set { ataque = value; }
+        get { return ataques; }
+        set { ataques = value; }
     }
-    public AtaqueEspecial AtaqueEspecial
+
+    public void MostrarAtaques()
     {
-        get { return ataqueEspecial; }
-        set { ataqueEspecial = value; }
+        foreach (var ataque in Ataques)
+        {
+           Console.WriteLine($"Nombre= {ataque.Nombre}\n Valor de ataque= {ataque.ValorAtaque}"); 
+        }
     }
     
 }

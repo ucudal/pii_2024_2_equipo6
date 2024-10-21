@@ -1,43 +1,26 @@
-# Qué hay configurado en esta plantilla
+# ¿QUÉ DESAFÍOS DE LA ENTREGA FUERON MÁS DIFÍCILES?
+Lo que nos pareció más difícil fue la fachada, debido a que teníamos que implementar varias cosas de las otras clases y además, nos ibamos dando cuenta que en las demás clases faltaban ciertas cosas
+y debíamos cambiarlas o agregarlas. La parte de "Iniciar batalla" nos complicó porque debíamos pensar la vida de los pokemones, a quien le tocaba en ese turno, agregar siempre un 
+comentario para que el usuario sepa que está pasando en ese momento. 
+También la clase "Efectividad" fue díficil, pensar que hay que crear un diccionario para cada tipo no fue algo fácil de intuir. 
+Además el "TestBatalla" también fue complicado, porque llama varias cosas al mismo tiempo, y teníamos que tener cuidado de llamar a lo que se pide y verificar
+bien el valor.
 
-1. Un proyecto de biblioteca (creado con [`dotnet new classlib --name Library`](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-new?tabs=netcore22)) en la carpeta `src\Library`
-2. Un proyecto de aplicación de consola (creado con [`dotnet new console --name Program`](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-new?tabs=netcore22)) en la carpeta `src\Program`
-3. Un proyecto de prueba en [NUnit](https://nunit.org/) (creado con [`dotnet new nunit --name LibraryTests`](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-new?tabs=netcore22)) en la carpeta `test\LibraryTests`
-4. Un proyecto de [Doxygen](https://www.doxygen.nl/index.html) para generación de sitio web de documentación en la carpeta `docs`
-5. Análisis estático con [Roslyn analyzers](https://docs.microsoft.com/en-us/dotnet/fundamentals/code-analysis/overview) en los proyectos de biblioteca y de aplicación
-6. Análisis de estilo con [StyleCop](https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/README.md) en los proyectos de biblioteca y de aplicación
-7. Una solución `ProjectTemplate.sln` que referencia todos los proyectos de C# y facilita la compilación con [`dotnet build`](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-build).
-8. Tareas preconfiguradas para compilar y ejecutar los proyectos, ejecutar las pruebas, y generar documentación desde VSCode en la carpeta `.vscode`
-9. Análisis de cobertura de los casos de prueba mediante []() que aparece en los márgenes con el complemento de VS Code [Coverage Gutters](https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters).
-10. Ejecución automática de compilación y prueba mediante [GitHub Actions](https://docs.github.com/en/actions) configuradas en el repositorio al hacer [push](https://github.com/git-guides/git-push) o [pull request](https://docs.github.com/en/github/collaborating-with-pull-requests).
 
-Vean este 🎥 [video](https://web.microsoftstream.com/video/55c6a06c-07dc-4f95-a96d-768f198c9044) que explica el funcionamiento de la plantilla.
+# ¿Qué cosas aprendimos que no habíamos aprendido en clase?
 
-## Convenciones
+1. Llamar varios método dentro de una línea
+2. A usar mejor los test, los tipos de Asserts
+3. El uso de fachada, para que servía.
 
-[Convenciones de código en C#](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions)
 
-[Convenciones de nombres en C#](https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/naming-guidelines)
+## ¿Qué recursos nos ayudaron?
+Nos ayudamos mucho entre nosotros, pedimos ayuda también del profesor. Somos un equipo muy unido, entonces siempre nos pudimos apoyar y preguntar 
+las dudas que teníamos
 
-## Dónde encontrar información sobre los errores/avisos al compilar
 
-[C# Compiler Errors (CS*)](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-messages/)
-
-[Roslyn Analyzer Warnings (CA*)](https://docs.microsoft.com/en-us/dotnet/fundamentals/code-analysis/categories)
-
-[StyleCop Analyzer Warnings (SA*)](https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/DOCUMENTATION.md)
-
-# Cómo deshabilitar temporalmente los avisos al compilar
-
-## Roslyn Analyzer
-
-Comentar las siguientes líneas en los archivos de proyecto (`*.csproj`)
-```
-    <EnableNETAnalyzers>true</EnableNETAnalyzers>
-    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
-    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-```
-
-## StyleCop Analyzer
-
-Comentar la línea `<PackageReference Include="StyleCop.Analyzers" Version="1.1.118"/>` en los archivos de proyecto (`*.csproj`)
+## Comentarios
+Fue un buen trabajo, nos une más como grupo y nos ayuda a entender la dinámica de C#, como también de GitHub.
+Lo más complicado fue pasarlo en pantalla todo lo que hicimos anteriormente, pero en su mayoria,
+logramos hacerlo con éxito. Esperamos en las próximas ediciones de entregas un buen flujo 
+de trabajo, informacion y comunicacion tanto de los compañeros como de los docentes.

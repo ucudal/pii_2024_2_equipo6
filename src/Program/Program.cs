@@ -28,5 +28,6 @@ public class Program
       FACHADA.ElegirPokemonInicial(jugador1);
       FACHADA.ElegirPokemonInicial(jugador2);
       FACHADA.IniciarBatalla(jugador1,jugador2);
+      
    }
 }
