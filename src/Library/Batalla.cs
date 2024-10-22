@@ -35,19 +35,22 @@ public class Batalla
         get { return jugador2; }
     }
 
+   
+
     public void Atacar(Jugador atacante, Jugador receptor)
     {
+        double precisionPokemon = atacante.Pokemonelegido.Precision;
         atacante.Pokemonelegido.MostrarAtaques();
         Efectividad efec = new Efectividad();
         double efectividad = efec.getEfectividad(atacante.Pokemonelegido.Tipo, receptor.Pokemonelegido.Tipo);
         if (atacante == jugador1 && turno)
         {
-            if (random.NextDouble() * 100 > 49)
+            if (random.NextDouble() * 100 <=precisionPokemon)
             {
-                if (random.NextDouble() * 100 > 9)
+                if (random.NextDouble() <0.10)
                 {
 
-                    receptor.Pokemonelegido.Hp -= (atacante.Pokemonelegido.Ataque.ValorAtaque * efectividad) * 0.2;
+                    receptor.Pokemonelegido.Hp -= (atacante.Pokemonelegido.Ataque.ValorAtaque * efectividad) * 1.2;
                     contador1 -= 1;
                     turno = !turno;
                 }
@@ -68,11 +71,11 @@ public class Batalla
         
         else if (atacante == jugador2 && !turno)
         {
-            if (random.NextDouble() * 100 > 49)
+            if (random.NextDouble() * 100 <=precisionPokemon)
             {
-                if (random.NextDouble() * 100 > 9)
+                if (random.NextDouble() <0.10)
                 {
-                    receptor.Pokemonelegido.Hp -= (atacante.Pokemonelegido.Ataque.ValorAtaque * efectividad) * 0.20;
+                    receptor.Pokemonelegido.Hp -= (atacante.Pokemonelegido.Ataque.ValorAtaque * efectividad) * 1.2;
 
                     contador2 -= 1;
                     turno = !turno;
@@ -145,6 +148,7 @@ public class Batalla
 
     private void AplicarEfectoEspecial( Jugador receptor, IEfecto efectoEspecial)
     {
+        
         if (!receptor.Pokemonelegido.TieneEstadoEspecial)
         {
             receptor.Pokemonelegido.TieneEstadoEspecial = true;
@@ -180,14 +184,15 @@ public class Batalla
     public void ProcesarEfectosJugador(Jugador jugador, Jugador atacante)
 
     {
+        double precisionPokemon = atacante.Pokemonelegido.Precision;
         Efectividad efec = new Efectividad();
         double efectividad = efec.getEfectividad(atacante.Pokemonelegido.Tipo, jugador.Pokemonelegido.Tipo);
         if (jugador.Pokemonelegido.TieneEstadoEspecial && jugador.Pokemonelegido.EstaDormido &&
             jugador.Pokemonelegido.TurnosDormido > 0)
         {
-            if (random.NextDouble() * 100 > 49)
+            if (random.NextDouble() * 100 <=precisionPokemon)
             {
-                if (random.NextDouble() * 100 > 9)
+                if (random.NextDouble() <0.10)
                 {
                     jugador.Pokemonelegido.TurnosDormido += 0.2;
                     Console.WriteLine(
@@ -209,11 +214,11 @@ public class Batalla
         }
         else if (jugador.Pokemonelegido.EstaEnvenenado)
         {
-            if (random.NextDouble() * 100 > 49)
+            if (random.NextDouble() * 100 <=precisionPokemon)
             {
-                if (random.NextDouble() * 100 > 9)
+                if (random.NextDouble() <0.10)
                 {
-                    double danoVeneno = (atacante.Pokemonelegido.AtaqueEspecial.ValorAtaque * efectividad) * 0.25;
+                    double danoVeneno = (atacante.Pokemonelegido.AtaqueEspecial.ValorAtaque * efectividad) * 1.25;
                     jugador.Pokemonelegido.Hp -= danoVeneno;
                     Console.WriteLine($"{jugador.Pokemonelegido.Nombre} ha sido envenenado y perdió {danoVeneno} Hp");
                 }
@@ -232,11 +237,11 @@ public class Batalla
         }
         else if (jugador.Pokemonelegido.EstaQuemado)
         {
-            if (random.NextDouble() * 100 > 49)
+            if (random.NextDouble() * 100 <=precisionPokemon)
             {
-                if (random.NextDouble() * 100 > 9)
+                if (random.NextDouble() <0.10)
                 {
-                    double danoQuemadura = (atacante.Pokemonelegido.AtaqueEspecial.ValorAtaque * efectividad) * 0.30;
+                    double danoQuemadura = (atacante.Pokemonelegido.AtaqueEspecial.ValorAtaque * efectividad) * 1.30;
                     jugador.Pokemonelegido.Hp -= danoQuemadura;
                     Console.WriteLine($"{jugador.Pokemonelegido.Nombre} ha sido quemado y perdió {danoQuemadura} Hp");
                 }
@@ -256,7 +261,7 @@ public class Batalla
         //Revisar EstaParalizado
         else if (jugador.Pokemonelegido.EstaParalizado)
         {
-            if (random.NextDouble() * 100 > 49)
+            if (random.NextDouble() * 100 <=precisionPokemon)
             {
                 turno = false;
                 Console.WriteLine($"{jugador.Pokemonelegido.Nombre} esta paralizado y no puede atacar"); 
@@ -264,9 +269,9 @@ public class Batalla
             }
             else
             {
-                if (random.NextDouble() * 100 > 9)
+                if (random.NextDouble() <0.10)
                 {
-                    double danoParalisis = (jugador.Pokemonelegido.AtaqueEspecial.ValorAtaque * efectividad) * 0.20;
+                    double danoParalisis = (jugador.Pokemonelegido.AtaqueEspecial.ValorAtaque * efectividad) * 1.20;
                     atacante.Pokemonelegido.Hp -= danoParalisis;
                     Console.WriteLine(
                         $"{atacante.Pokemonelegido.Nombre}, ha sido atacado por {jugador.Pokemonelegido.Nombre}");
@@ -335,7 +340,7 @@ public class Batalla
                {
                    if (jugador.Pokemonelegido.Hp == 0)
                    {
-                       jugador.Pokemonelegido.Hp = jugador.Pokemonelegido.Hp * 0.50;
+                       jugador.Pokemonelegido.Hp = jugador.Pokemonelegido.VidaMaxima * 0.50;
                        if (jugador.Pokemonelegido.Hp > jugador.Pokemonelegido.VidaMaxima)
                        {
                            jugador.Pokemonelegido.Hp = jugador.Pokemonelegido.VidaMaxima;
