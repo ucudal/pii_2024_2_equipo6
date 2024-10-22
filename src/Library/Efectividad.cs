@@ -145,8 +145,6 @@ public class Efectividad
         }
     };
     
-    //queda tipo roca, tierra, veneno, volador
-    
     public double getEfectividad(Tipo atacante, Tipo receptor)
     {
         if (TablaTipos.ContainsKey(atacante.Nombre))
