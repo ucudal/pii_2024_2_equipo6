@@ -59,6 +59,10 @@ public class Batalla
                 }
 
             }
+            else                                                                
+            {                                                                   
+                Console.WriteLine("Su precision falló, turno perdido.");        
+            }                                                                   
         }
         
         else if (atacante == jugador2 && !turno)
@@ -195,6 +199,10 @@ public class Batalla
                     }
                 }
             }
+            else                                                                
+            {                                                                   
+                Console.WriteLine("Su precision falló, turno perdido.");        
+            }                                                                   
 
         }
         else if (jugador.Pokemonelegido.EstaEnvenenado)
@@ -215,6 +223,10 @@ public class Batalla
                 }
 
             }
+            else                                                                
+            {                                                                   
+                Console.WriteLine("Su precision falló, turno perdido.");        
+            }                                                                   
         }
         else if (jugador.Pokemonelegido.EstaQuemado)
         {
@@ -234,16 +246,39 @@ public class Batalla
 
                 }
             }
+            else                                                                
+            {                                                                   
+                Console.WriteLine("Su precision falló, turno perdido.");        
+            }                                                                   
         }
+        //Revisar EstaParalizado
         else if (jugador.Pokemonelegido.EstaParalizado)
         {
             if (random.NextDouble() * 100 > 49)
             {
-                Console.WriteLine($"{jugador.Pokemonelegido.Nombre} esta paralizado y no puede atacar");
+                turno = false;
+                Console.WriteLine($"{jugador.Pokemonelegido.Nombre} esta paralizado y no puede atacar"); 
+              
             }
             else
             {
-                Console.WriteLine($"{jugador.Pokemonelegido.Nombre} logra superar la paralisis. ")
+                if (random.NextDouble() * 100 > 9)
+                {
+                    double danoParalisis = (jugador.Pokemonelegido.AtaqueEspecial.ValorAtaque * efectividad) * 0.20;
+                    atacante.Pokemonelegido.Hp -= danoParalisis;
+                    Console.WriteLine(
+                        $"{atacante.Pokemonelegido.Nombre}, ha sido atacado por {jugador.Pokemonelegido.Nombre}");
+                }
+
+                else
+                
+                {
+                    double danoParalisis = (jugador.Pokemonelegido.AtaqueEspecial.ValorAtaque * efectividad);
+                    atacante.Pokemonelegido.Hp -= danoParalisis;                                                    
+                    Console.WriteLine($"{atacante.Pokemonelegido.Nombre}, ha sido atacado por {jugador.Pokemonelegido.Nombre}");  
+                    
+                }
+
             }
 
         }
@@ -256,7 +291,7 @@ public class Batalla
         ProcesarEfectosJugador(jugador2,jugador1);
     }
 
-   public void UtilizarItems(Jugador jugador)
+   public bool UtilizarItems(Jugador jugador)
    {
        Console.WriteLine($"DESEA USAR ALGUNO DE ESTOS ITEMS PARA{jugador.Pokemonelegido.Nombre}, su Hp es: {jugador.Pokemonelegido.Hp}:");       
        Console.WriteLine("");                                                                                                                    
@@ -279,7 +314,8 @@ public class Batalla
                    {
                        jugador.Pokemonelegido.Hp = jugador.Pokemonelegido.VidaMaxima;
                    }
-                   contadorSuperPocion--;                                                                                                                            
+                   contadorSuperPocion--;
+                   turno = false;
                    Console.WriteLine(                                                                                                                                
                        $"Se recupero 70 puntos de la vida de {jugador.Pokemonelegido.Nombre}, podrá usar en adelante la SuperPocion: {contadorSuperPocion} veces");  
                }
@@ -291,18 +327,27 @@ public class Batalla
 
            }
 
-           if (respuesta == "2")
+           else if (respuesta == "2")
            {
                if (contadorRevivir > 0)
                {
-                   jugador.Pokemonelegido.Hp = jugador.Pokemonelegido.Hp * 0.50;
-                   if (jugador.Pokemonelegido.Hp > jugador.Pokemonelegido.VidaMaxima)
+                   if (jugador.Pokemonelegido.Hp == 0)
                    {
-                       jugador.Pokemonelegido.Hp = jugador.Pokemonelegido.VidaMaxima;
+                       jugador.Pokemonelegido.Hp = jugador.Pokemonelegido.Hp * 0.50;
+                       if (jugador.Pokemonelegido.Hp > jugador.Pokemonelegido.VidaMaxima)
+                       {
+                           jugador.Pokemonelegido.Hp = jugador.Pokemonelegido.VidaMaxima;
+                       }
+                       contadorRevivir--;
+                       turno = false;
+                       Console.WriteLine(                                                                                                                        
+                           $"Aumento la vida de {jugador.Pokemonelegido.Nombre} un 50%, ahora tendrá {contadorRevivir} veces para usar el Revivir. "); 
                    }
-                   contadorRevivir--;                                                                                                                        
-                   Console.WriteLine(                                                                                                                        
-                       $"Aumento la vida de {jugador.Pokemonelegido.Nombre} un 50%, ahora tendrá {contadorRevivir} veces para usar el Revivir. ");           
+                   else
+                   {
+                       Console.WriteLine("No puede usarlo, no tiene pokemones debilitados.");
+                   }
+                             
                }
                else
                {
@@ -322,6 +367,7 @@ public class Batalla
                    jugador.Pokemonelegido.EstaParalizado = false;
                    jugador.Pokemonelegido.EstaQuemado = false;
                    contadorCuraTotal--;
+                   turno = false;
                    Console.WriteLine(
                        $"Su pokemon se curo de: {jugador.Pokemonelegido.EfectoActual}, ahora tendra {contadorCuraTotal} veces para usar la Cura Total.");
                }
@@ -336,10 +382,17 @@ public class Batalla
                Console.WriteLine("Caracter no valido, intente de nuevo.");
            }
 
+           if (!turno)
+           {
+               return false;
+           }
+
            Console.WriteLine(
                $"DESEA USAR ALGUNO DE ESTOS ITEMS PARA{jugador.Pokemonelegido.Nombre}, su Hp es: {jugador.Pokemonelegido.Hp}");
            respuesta = Console.ReadLine();
        }
+
+       return true;
    }                                                                                                                                         
        
 
