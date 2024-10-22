@@ -8,6 +8,7 @@ public class Pokemon
     private string nombre;
     private double hp;
     private Tipo tipo;
+    public double Precision { get; set; }
     private List<IAtaque> ataques = new List<IAtaque>();
     public bool EstaEnvenenado { get; set; }
     public bool EstaDormido { get; set; }
@@ -19,7 +20,7 @@ public class Pokemon
     public double VidaMaxima { get; set; }
     public List<AtaqueComun> AtaquesComunes { get; set; } = new List<AtaqueComun>(); 
     private List<AtaqueEspecial> AtaqueEspeciales { get; set; } = new List<AtaqueEspecial>();
-    public Pokemon(string nombre, double hp, Tipo tipo)
+    public Pokemon(string nombre, double hp, Tipo tipo, double precision)
     {
         this.nombre = nombre;
         this.hp =VidaMaxima ;
@@ -30,6 +31,7 @@ public class Pokemon
         this.Ataques.AddRange(AtaqueEspeciales);
         this.Ataques.AddRange(AtaquesComunes);
         TurnosDormido = 0;
+        Precision = precision;
     }
     
     public string Nombre
