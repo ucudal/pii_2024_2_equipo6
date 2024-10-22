@@ -9,8 +9,15 @@ public class Veneno: IEfecto
     private string nombre = "Veneno";
     public void AplicarEfecto( Jugador receptor)
     {
-        receptor.Pokemonelegido.EstaEnvenenado = true;
-        receptor.Pokemonelegido.TieneEstadoEspecial = true;
-        Console.WriteLine($"{receptor.Pokemonelegido.Nombre} ha sido envenenado");
+        if (!receptor.Pokemonelegido.EstaEnvenenado)
+        {
+            receptor.Pokemonelegido.EstaEnvenenado = true;
+            receptor.Pokemonelegido.TieneEstadoEspecial = true;
+            Console.WriteLine($"{receptor.Pokemonelegido.Nombre} ha sido envenenado");
+        }
+        else
+        {
+            Console.WriteLine($"{receptor.Pokemonelegido.Nombre} ya está envenenado.");
+        }
     }
 }
