@@ -1,6 +1,6 @@
 ﻿using ProyectoPokemon;
 
-namespace Program;
+namespace Proagugram;
 using System;
 using System.Collections.Generic;
 public class Program
@@ -23,7 +23,7 @@ public class Program
       FACHADA.ElegirPokemonParaJugar(jugador1,catalogo);
       Console.WriteLine("\nJugador2, ingresa tu nombre: ");
       jugador2.Nombre = Console.ReadLine();
-      Console.WriteLine($"\n{jugador1.Nombre},elige tus 6 pokemones.Introduce el numero correspondiente del catálogo:");
+      Console.WriteLine($"\n{jugador2.Nombre},elige tus 6 pokemones.Introduce el numero correspondiente del catálogo:");
       FACHADA.ElegirPokemonParaJugar(jugador2,catalogo);
       FACHADA.ElegirPokemonInicial(jugador1);
       FACHADA.ElegirPokemonInicial(jugador2);
