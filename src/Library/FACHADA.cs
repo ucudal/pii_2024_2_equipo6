@@ -1,6 +1,9 @@
 ﻿using System.Data.Common;
 using System;
 using System.Collections.Generic;
+using ProyectoPokemon.Efectos;
+using ProyectoPokemon.Interfaces;
+
 namespace ProyectoPokemon;
 
 public class FACHADA
@@ -9,22 +12,26 @@ public class FACHADA
 
     public FACHADA()
     {
-        Tipo tipoFuego = new Tipo("Fuego", new Ataque("Llamarada", 100), new AtaqueEspecial("Inferno", 120));
-        Tipo tipoVolador = new Tipo("Volador", new Ataque("Tornado", 80), new AtaqueEspecial("Huracán", 110));
-        Tipo tipoAgua = new Tipo("Agua", new Ataque("Aqua Jet", 60), new AtaqueEspecial("Hidrobomba", 130));
+        IEfecto quemadura = new Quemadura();
+        IEfecto veneno = new Veneno();
+        IEfecto somnolencia = new Somnolencia();
+        IEfecto paralisis = new Paralisis();
+        Tipo tipoFuego = new Tipo("Fuego", [new AtaqueComun("Llamarada", 100), new AtaqueEspecial("Inferno", 120,quemadura)]);
+        Tipo tipoVolador = new Tipo("Volador", [new AtaqueComun("Tornado", 80), new AtaqueEspecial("Huracán", 110,somnolencia)]);
+        Tipo tipoAgua = new Tipo("Agua", [new AtaqueComun("Aqua Jet", 60), new AtaqueEspecial("Hidrobomba", 130,paralisis)]);
         Tipo tipoElectrico = new Tipo("Electrico",
-            new Ataque("Electric bombard", 50), new AtaqueEspecial("Eelctrico con filos", 100));
+            [new AtaqueComun("Electric bombard", 50), new AtaqueEspecial("Eelctrico con filos", 100,veneno)]);
 
-        catalogo.Add(new Pokemon("Charizard", 266, tipoFuego));
-        catalogo.Add(new Pokemon("Blastoise", 268, tipoAgua));
-        catalogo.Add(new Pokemon("Gyarados", 267, tipoVolador));
-        catalogo.Add(new Pokemon("Pikachu", 300, tipoElectrico));
-        catalogo.Add(new Pokemon("Luz", 250, tipoVolador));
-        catalogo.Add(new Pokemon("Mardin", 290, tipoFuego));
-        catalogo.Add(new Pokemon("Blastoise", 230, tipoAgua));
-        catalogo.Add(new Pokemon("Drag", 270, tipoFuego));
-        catalogo.Add(new Pokemon("Floid", 265, tipoVolador));
-        catalogo.Add(new Pokemon("Blan", 273, tipoAgua));
+        catalogo.Add(new Pokemon("Charizard", 266, tipoFuego,50));
+        catalogo.Add(new Pokemon("Blastoise", 268, tipoAgua,80));
+        catalogo.Add(new Pokemon("Gyarados", 267, tipoVolador,40));
+        catalogo.Add(new Pokemon("Pikachu", 300, tipoElectrico,65));
+        catalogo.Add(new Pokemon("Luz", 250, tipoVolador,39));
+        catalogo.Add(new Pokemon("Mardin", 290, tipoFuego,77));
+        catalogo.Add(new Pokemon("Blastoise", 230, tipoAgua,49));
+        catalogo.Add(new Pokemon("Drag", 270, tipoFuego,83));
+        catalogo.Add(new Pokemon("Floid", 265, tipoVolador,23));
+        catalogo.Add(new Pokemon("Blan", 273, tipoAgua,92));
     }
 
     public List<Pokemon> ObtenerCatalogo()
