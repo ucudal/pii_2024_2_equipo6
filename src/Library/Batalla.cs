@@ -37,12 +37,12 @@ public class Batalla
 
    
 
-    public void Atacar(Jugador atacante, Jugador receptor)
+    public void Atacar(Jugador atacante, Jugador receptor, AtaqueComun ataque)
     {
         double precisionPokemon = atacante.Pokemonelegido.Precision;
-        atacante.Pokemonelegido.MostrarAtaques();
         Efectividad efec = new Efectividad();
         double efectividad = efec.getEfectividad(atacante.Pokemonelegido.Tipo, receptor.Pokemonelegido.Tipo);
+        int indiceAtaque = atacante.Pokemonelegido.Ataques.IndexOf(ataque);
         if (atacante == jugador1 && turno)
         {
             if (random.NextDouble() * 100 <=precisionPokemon)
@@ -50,14 +50,14 @@ public class Batalla
                 if (random.NextDouble() <0.10)
                 {
 
-                    receptor.Pokemonelegido.Hp -= (atacante.Pokemonelegido.Ataque.ValorAtaque * efectividad) * 1.2;
+                    receptor.Pokemonelegido.Hp -= (atacante.Pokemonelegido.Ataques[indiceAtaque].ValorAtaque * efectividad) * 1.2;
                     contador1 -= 1;
                     turno = !turno;
                 }
                 else
                 {
 
-                    receptor.Pokemonelegido.Hp -= atacante.Pokemonelegido.Ataque.ValorAtaque * efectividad;
+                    receptor.Pokemonelegido.Hp -= atacante.Pokemonelegido.Ataques[indiceAtaque].ValorAtaque * efectividad;
                     contador1 -= 1;
                     turno = !turno;
                 }
@@ -75,14 +75,14 @@ public class Batalla
             {
                 if (random.NextDouble() <0.10)
                 {
-                    receptor.Pokemonelegido.Hp -= (atacante.Pokemonelegido.Ataque.ValorAtaque * efectividad) * 1.2;
+                    receptor.Pokemonelegido.Hp -= (atacante.Pokemonelegido.Ataques[indiceAtaque].ValorAtaque * efectividad) * 1.2;
 
                     contador2 -= 1;
                     turno = !turno;
                 }
                 else
                 {
-                    receptor.Pokemonelegido.Hp -= atacante.Pokemonelegido.Ataque.ValorAtaque * efectividad;
+                    receptor.Pokemonelegido.Hp -= atacante.Pokemonelegido.Ataques[indiceAtaque].ValorAtaque * efectividad;
 
                     contador2 -= 1;
                     turno = !turno;
@@ -102,41 +102,39 @@ public class Batalla
 
     }
 
-    public void AtacarConEspecial(Jugador atacante, Jugador receptor)
+    public void AtacarConEspecial(Jugador atacante, Jugador receptor, AtaqueEspecial ataqueEspecial)
     {
         atacante.Pokemonelegido.MostrarAtaques();
         Efectividad efec = new Efectividad();
         double efectividad = efec.getEfectividad(atacante.Pokemonelegido.Tipo, receptor.Pokemonelegido.Tipo);
         if (atacante == jugador1 && turno && contador1 <= 0)
         {
-            receptor.Pokemonelegido.Hp -= atacante.Pokemonelegido.AtaqueEspecial.ValorAtaque * efectividad;
+            receptor.Pokemonelegido.Hp -= ataqueEspecial.ValorAtaque * efectividad;
             contador1 = 2;
-            contadorEfecto1 -= 1;
-            AplicarEfectoEspecial(receptor, atacante.Pokemonelegido.AtaqueEspecial.Efecto);
+            AplicarEfectoEspecial(receptor, ataqueEspecial.Efecto);
             turno = !turno;
-            //Chequeo si pasaron los turnos necesarios para poder aplicar el efecto
-            if (contadorEfecto1 <= 0)
+            //Chequeo si el pokemon que va a ser atacado, ya tenga un efecto sobre él
+            if (receptor.Pokemonelegido.EfectoActual == null)
             {
-                //Aplico el efecto  y reseteo el contador de efecto    
-                contadorEfecto1 = atacante.Pokemonelegido.AtaqueEspecial.Efecto.contador;
-                AplicarEfectoEspecial(receptor, atacante.Pokemonelegido.AtaqueEspecial.Efecto);
+                //Aplico el efecto
+                AplicarEfectoEspecial(receptor, ataqueEspecial.Efecto);
 
             }
         }
 
         else if (atacante == jugador2 && !turno && contador2 <= 0)
         {
-            receptor.Pokemonelegido.Hp -= atacante.Pokemonelegido.AtaqueEspecial.ValorAtaque * efectividad;
+            receptor.Pokemonelegido.Hp -= ataqueEspecial.ValorAtaque * efectividad;
             contador2 = 2;
             contadorEfecto2 -= 1;
-            AplicarEfectoEspecial(receptor, atacante.Pokemonelegido.AtaqueEspecial.Efecto );
+            AplicarEfectoEspecial(receptor, ataqueEspecial.Efecto );
             turno = !turno;
-            //Chequeo si pasaron los turnos necesarios para poder aplicar el efecto
-            if (contadorEfecto2 <= 0)
+            //Chequeo si el pokemon que va a ser atacado, ya tenga un efecto sobre él
+            if (receptor.Pokemonelegido.EfectoActual == null)
             {
-                //Aplico el efecto  y reseteo el contador de efecto
-                contadorEfecto2 = atacante.Pokemonelegido.AtaqueEspecial.Efecto.contador;
-                AplicarEfectoEspecial(receptor, atacante.Pokemonelegido.AtaqueEspecial.Efecto);
+                //Aplico el efecto
+                AplicarEfectoEspecial(receptor, ataqueEspecial.Efecto);
+
             }
         }
         else
@@ -181,7 +179,7 @@ public class Batalla
         
     }
 
-    public void ProcesarEfectosJugador(Jugador jugador, Jugador atacante)
+    public void ProcesarEfectosJugador(Jugador jugador, Jugador atacante, AtaqueEspecial ataqueEspecial)
 
     {
         double precisionPokemon = atacante.Pokemonelegido.Precision;
@@ -218,13 +216,13 @@ public class Batalla
             {
                 if (random.NextDouble() <0.10)
                 {
-                    double danoVeneno = (atacante.Pokemonelegido.AtaqueEspecial.ValorAtaque * efectividad) * 1.25;
+                    double danoVeneno = (ataqueEspecial.ValorAtaque * efectividad) * 1.25;
                     jugador.Pokemonelegido.Hp -= danoVeneno;
                     Console.WriteLine($"{jugador.Pokemonelegido.Nombre} ha sido envenenado y perdió {danoVeneno} Hp");
                 }
                 else
                 {
-                    double danoVeneno = (atacante.Pokemonelegido.AtaqueEspecial.ValorAtaque * efectividad) * 0.05;
+                    double danoVeneno = (ataqueEspecial.ValorAtaque * efectividad) * 0.05;
                     jugador.Pokemonelegido.Hp -= danoVeneno;
                     Console.WriteLine($"{jugador.Pokemonelegido.Nombre} ha sido envenenado y perdió {danoVeneno} Hp");
                 }
@@ -241,13 +239,13 @@ public class Batalla
             {
                 if (random.NextDouble() <0.10)
                 {
-                    double danoQuemadura = (atacante.Pokemonelegido.AtaqueEspecial.ValorAtaque * efectividad) * 1.30;
+                    double danoQuemadura = (ataqueEspecial.ValorAtaque * efectividad) * 1.30;
                     jugador.Pokemonelegido.Hp -= danoQuemadura;
                     Console.WriteLine($"{jugador.Pokemonelegido.Nombre} ha sido quemado y perdió {danoQuemadura} Hp");
                 }
                 else
                 {
-                    double danoQuemadura = (atacante.Pokemonelegido.AtaqueEspecial.ValorAtaque * efectividad) * 0.10;
+                    double danoQuemadura = (ataqueEspecial.ValorAtaque * efectividad) * 0.10;
                     jugador.Pokemonelegido.Hp -= danoQuemadura;
                     Console.WriteLine($"{jugador.Pokemonelegido.Nombre} ha sido quemado y perdió {danoQuemadura} Hp");
 
@@ -271,7 +269,7 @@ public class Batalla
             {
                 if (random.NextDouble() <0.10)
                 {
-                    double danoParalisis = (jugador.Pokemonelegido.AtaqueEspecial.ValorAtaque * efectividad) * 1.20;
+                    double danoParalisis = (ataqueEspecial.ValorAtaque * efectividad) * 1.20;
                     atacante.Pokemonelegido.Hp -= danoParalisis;
                     Console.WriteLine(
                         $"{atacante.Pokemonelegido.Nombre}, ha sido atacado por {jugador.Pokemonelegido.Nombre}");
@@ -280,7 +278,7 @@ public class Batalla
                 else
                 
                 {
-                    double danoParalisis = (jugador.Pokemonelegido.AtaqueEspecial.ValorAtaque * efectividad);
+                    double danoParalisis = (ataqueEspecial.ValorAtaque * efectividad);
                     atacante.Pokemonelegido.Hp -= danoParalisis;                                                    
                     Console.WriteLine($"{atacante.Pokemonelegido.Nombre}, ha sido atacado por {jugador.Pokemonelegido.Nombre}");  
                     
@@ -292,115 +290,23 @@ public class Batalla
     }
 
 
-    public void Turno()
+   /* public void Turno()
     {
         ProcesarEfectosJugador(jugador1,jugador2);
         ProcesarEfectosJugador(jugador2,jugador1);
     }
+    */
 
-   public bool UtilizarItems(Jugador jugador)
+   public bool UtilizarItems(Jugador jugador, IItems items)
    {
-       Console.WriteLine($"DESEA USAR ALGUNO DE ESTOS ITEMS PARA{jugador.Pokemonelegido.Nombre}, su Hp es: {jugador.Pokemonelegido.Hp}:");       
-       Console.WriteLine("");                                                                                                                    
-       Console.WriteLine("1:SuperPocion:Recupera 70 puntos de HP");                                                                              
-       Console.WriteLine("");                                                                                                                    
-       Console.WriteLine("2.Revivir:Revive un Pokmeon con el 50% de su HP total");                                                               
-       Console.WriteLine("");                                                                                                                    
-       Console.WriteLine("3.CuraTotal:Cura a un pokemones");
-       Console.WriteLine(
-           "Si desea usar alguno de estos items, solo presione su numero correspondiente, de lo contrario, escriba NO:");
-       string respuesta = Console.ReadLine();
-       while (respuesta.ToUpper() != "NO")
+       if (jugador.Pokemonelegido != null)
        {
-           if (respuesta == "1")
-           {
-               if (contadorSuperPocion > 0)
-               {
-                   jugador.Pokemonelegido.Hp += 70;
-                   if (jugador.Pokemonelegido.Hp > jugador.Pokemonelegido.VidaMaxima)
-                   {
-                       jugador.Pokemonelegido.Hp = jugador.Pokemonelegido.VidaMaxima;
-                   }
-                   contadorSuperPocion--;
-                   turno = false;
-                   Console.WriteLine(                                                                                                                                
-                       $"Se recupero 70 puntos de la vida de {jugador.Pokemonelegido.Nombre}, podrá usar en adelante la SuperPocion: {contadorSuperPocion} veces");  
-               }
-               else
-               {
-                   Console.WriteLine(
-                       "No puede usar SuperPocion ya que agotó las posibilidades, porfavor intente de nuevo ");
-               }
-
-           }
-
-           else if (respuesta == "2")
-           {
-               if (contadorRevivir > 0)
-               {
-                   if (jugador.Pokemonelegido.Hp == 0)
-                   {
-                       jugador.Pokemonelegido.Hp = jugador.Pokemonelegido.VidaMaxima * 0.50;
-                       if (jugador.Pokemonelegido.Hp > jugador.Pokemonelegido.VidaMaxima)
-                       {
-                           jugador.Pokemonelegido.Hp = jugador.Pokemonelegido.VidaMaxima;
-                       }
-                       contadorRevivir--;
-                       turno = false;
-                       Console.WriteLine(                                                                                                                        
-                           $"Aumento la vida de {jugador.Pokemonelegido.Nombre} un 50%, ahora tendrá {contadorRevivir} veces para usar el Revivir. "); 
-                   }
-                   else
-                   {
-                       Console.WriteLine("No puede usarlo, no tiene pokemones debilitados.");
-                   }
-                             
-               }
-               else
-               {
-                   Console.WriteLine(
-                       "No puede usar Revivir ya que agotó las posibilidades, porfavor intente de nuevo ");
-
-               }
-           }
-
-           if (respuesta == "3")
-           {
-               if (contadorCuraTotal > 0)
-               {
-                   jugador.Pokemonelegido.EstaDormido = false;
-                   jugador.Pokemonelegido.EstaEnvenenado = false;
-                   jugador.Pokemonelegido.TurnosDormido = 0;
-                   jugador.Pokemonelegido.EstaParalizado = false;
-                   jugador.Pokemonelegido.EstaQuemado = false;
-                   contadorCuraTotal--;
-                   turno = false;
-                   Console.WriteLine(
-                       $"Su pokemon se curo de: {jugador.Pokemonelegido.EfectoActual}, ahora tendra {contadorCuraTotal} veces para usar la Cura Total.");
-               }
-               else
-               {
-                   Console.WriteLine(
-                       "No puede usar Cura Total ya que agotó las posibilidades, porfavor intente de nuevo.");
-               }
-           }
-           else
-           {
-               Console.WriteLine("Caracter no valido, intente de nuevo.");
-           }
-
-           if (!turno)
-           {
-               return false;
-           }
-
-           Console.WriteLine(
-               $"DESEA USAR ALGUNO DE ESTOS ITEMS PARA{jugador.Pokemonelegido.Nombre}, su Hp es: {jugador.Pokemonelegido.Hp}");
-           respuesta = Console.ReadLine();
+           items.Usar(jugador.Pokemonelegido);
+           return true;
        }
-
-       return true;
-   }                                                                                                                                         
-       
-
+       else
+       {
+           return false;
+       }
+   }
 }
