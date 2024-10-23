@@ -14,7 +14,7 @@ namespace Tests
             Batalla batalla = new Batalla(jugador2, jugador1);
             var tipoElectrico = new Tipo("Electrico", new Ataque("Rayos", 5), new AtaqueEspecial("Rayos especiales", 10));
             var tipoAgua = new Tipo("Agua", new Ataque("Bolas de agua", 3),
-                new AtaqueEspecial("Bolas de agua con rayos", 7));
+                new AtaqueEspecial("Bolas de agua con rayos", 7,));
             Pokemon pokemon1 = new Pokemon("Pikachu", 100, tipoElectrico);
 
             Pokemon pokemon2 = new Pokemon("Luz", 100, tipoAgua);
