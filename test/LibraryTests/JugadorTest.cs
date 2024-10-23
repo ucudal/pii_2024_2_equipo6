@@ -1,5 +1,7 @@
 using NUnit.Framework;
 using ProyectoPokemon;
+using ProyectoPokemon.Efectos;
+using ProyectoPokemon.Interfaces;
 
 namespace Tests;
 
@@ -16,10 +18,11 @@ public class JugadorTest
     [Test]
     public void ElegirPokemon()
     {
-        Ataque ataque = new Ataque("Bombita de agua", 15);
-        AtaqueEspecial ataqueEspecial = new AtaqueEspecial("Pistola de agua", 25);
-        Tipo agua = new Tipo("Agua", ataque, ataqueEspecial);
-        Pokemon pokemon = new Pokemon("Bulbasaur", 28.5, agua);
+        IEfecto veneno = new Veneno();
+        AtaqueComun ataque = new AtaqueComun("Bombita de agua", 15);
+        AtaqueEspecial ataqueEspecial = new AtaqueEspecial("Pistola de agua", 25, veneno);
+        Tipo agua = new Tipo("Agua", [ataque, ataqueEspecial]);
+        Pokemon pokemon = new Pokemon("Bulbasaur", 28.5, agua, 51.6);
         Jugador jugador = new Jugador("Jessie");
         jugador.ElegirPokemon(pokemon);
         Assert.That(pokemon, Is.EqualTo(jugador.Pokemones[0]));
@@ -29,10 +32,11 @@ public class JugadorTest
     [Test]
     public void PokemonActual()
     {
-        Ataque ataque = new Ataque("Velita", 15);
-        AtaqueEspecial ataqueEspecial = new AtaqueEspecial("Encendedor", 25);
-        Tipo fuego = new Tipo("Fuego", ataque, ataqueEspecial);
-        Pokemon pokemon = new Pokemon("Charmander", 28.5, fuego);
+        IEfecto veneno = new Veneno();
+        AtaqueComun ataque = new AtaqueComun("Velita", 15);
+        AtaqueEspecial ataqueEspecial = new AtaqueEspecial("Encendedor", 25, veneno);
+        Tipo fuego = new Tipo("Fuego", [ataque, ataqueEspecial]);
+        Pokemon pokemon = new Pokemon("Charmander", 28.5, fuego, 46.8);
         Jugador jugador = new Jugador("Jessie");
         jugador.ElegirPokemon(pokemon);
         jugador.Pokemonelegido = pokemon;
