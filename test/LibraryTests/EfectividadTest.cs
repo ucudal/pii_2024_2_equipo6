@@ -1,5 +1,7 @@
 using NUnit.Framework;
 using ProyectoPokemon;
+using ProyectoPokemon.Efectos;
+using ProyectoPokemon.Interfaces;
 
 namespace Tests;
 
@@ -8,10 +10,14 @@ public class EfectividadTest
     [Test]
     public void ObtenerEficiencia()
     {
-        Tipo tipoAgua = new Tipo("Agua", new AtaqueComun("Pistola Agua", 20), new AtaqueEspecial("Hidrobomba", 120, "Somnolencia"));
-        Tipo tipoPlanta = new Tipo("Planta", new AtaqueComun("Látigo Cepa", 20), new AtaqueEspecial("Gigadrenado", 130));
-        Tipo tipoFuego = new Tipo("Fuego", new AtaqueComun("Ascuas", 10), new AtaqueEspecial("Lanzallamas", 140));
-        Tipo tipoDragon = new Tipo("Dragón", new AtaqueComun("Cola dragón", 20), new AtaqueEspecial("Cometa draco", 150));
+        IEfecto quemadura = new Quemadura();
+        IEfecto paralisis = new Paralisis();
+        IEfecto somnolencia = new Somnolencia();
+        IEfecto veneno = new Veneno();
+        Tipo tipoAgua = new Tipo("Agua", [new AtaqueComun("Pistola Agua", 20), new AtaqueEspecial("Hidrobomba", 120, somnolencia)]);
+        Tipo tipoPlanta = new Tipo("Planta", [new AtaqueComun("Látigo Cepa", 20), new AtaqueEspecial("Gigadrenado", 130, paralisis)]);
+        Tipo tipoFuego = new Tipo("Fuego", [new AtaqueComun("Ascuas", 10), new AtaqueEspecial("Lanzallamas", 140, quemadura )]);
+        Tipo tipoDragon = new Tipo("Dragón", [new AtaqueComun("Cola dragón", 20), new AtaqueEspecial("Cometa draco", 150, veneno)]);
 
         Efectividad efectividad = new Efectividad();
 
