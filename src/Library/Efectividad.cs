@@ -5,7 +5,7 @@ public class Efectividad
     // Tipos: Fuego, Agua, Planta, Eléctrico, Roca, Dragón, Bicho, Fantasma, Hielo,
     // Lucha, Normal, Psiquico, Tierra, Veneno, Volador, 
     
-    public Dictionary<string, Dictionary<string, double>> TablaTipos = new()
+    public static Dictionary<string, Dictionary<string, double>> TablaTipos = new()
     {
         {
             "Fuego",
@@ -145,7 +145,7 @@ public class Efectividad
         }
     };
     
-    public double getEfectividad(Tipo atacante, Tipo receptor)
+    public static double getEfectividad(Tipo atacante, Tipo receptor)
     {
         if (TablaTipos.ContainsKey(atacante.Nombre))
         {
