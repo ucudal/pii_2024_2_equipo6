@@ -7,8 +7,8 @@ public class CuracionTotal : IItems
     public string Nombre { get; set; }
 
     private string nombre = "Curacion Total";
-    public void Usar()
+    public void Usar(Pokemon pokemon)
     {
-        
+        pokemon.EfectoActual = null;
     }
 }
