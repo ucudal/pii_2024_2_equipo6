@@ -1,6 +1,8 @@
 ﻿using ProyectoPokemon;
 using NUnit.Framework;
 using ProyectoPokemon;
+using ProyectoPokemon.Efectos;
+using ProyectoPokemon.Interfaces;
 
 namespace Tests
 {
@@ -9,15 +11,17 @@ namespace Tests
         [Test]
         public void BatallaTest()
         {
+            IEfecto somnolencia = new Somnolencia();
+            IEfecto paralisis = new Paralisis();
             Jugador jugador1 = new Jugador("Diego");
             Jugador jugador2 = new Jugador("Julia");
             Batalla batalla = new Batalla(jugador2, jugador1);
-            var tipoElectrico = new Tipo("Electrico", new Ataque("Rayos", 5), new AtaqueEspecial("Rayos especiales", 10));
-            var tipoAgua = new Tipo("Agua", new Ataque("Bolas de agua", 3),
-                new AtaqueEspecial("Bolas de agua con rayos", 7,));
-            Pokemon pokemon1 = new Pokemon("Pikachu", 100, tipoElectrico);
+            Tipo tipoElectrico = new Tipo("Electrico", [new AtaqueComun("Rayos", 5), new AtaqueEspecial("Rayos especiales", 10, somnolencia)]);
+            Tipo tipoAgua = new Tipo("Agua", [new AtaqueComun("Bolas de agua", 3),
+                new AtaqueEspecial("Bolas de agua con rayos", 7, paralisis)]);
+            Pokemon pokemon1 = new Pokemon("Pikachu", 100, tipoElectrico, 57.9);
 
-            Pokemon pokemon2 = new Pokemon("Luz", 100, tipoAgua);
+            Pokemon pokemon2 = new Pokemon("Luz", 100, tipoAgua, 34.9);
             jugador1.ElegirPokemon(pokemon1);
             jugador1.Pokemonelegido = pokemon1;
             jugador2.ElegirPokemon(pokemon2);
