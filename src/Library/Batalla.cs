@@ -297,16 +297,16 @@ public class Batalla
     }
     */
 
-   public bool UtilizarItems(Jugador jugador, IItems items)
+   public bool UtilizarItems(Jugador jugador, IItems item)
    {
-       if (jugador.Pokemonelegido != null)
+       if (jugador.Pokemonelegido != null && item != null)
        {
-           items.Usar(jugador.Pokemonelegido);
+           item.Usar(jugador.Pokemonelegido);
+           jugador.Items.RemoveAt(Convert.ToInt32(item)-1); // Elimina la instancia del ítem después de usarlo
+           Console.WriteLine($"Se ha usado {item.Nombre} y eliminado del inventario.");
            return true;
        }
-       else
-       {
-           return false;
-       }
+
+       return false;
    }
 }
