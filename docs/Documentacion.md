@@ -1,6 +1,6 @@
-#Documentación del uso de principios/patrones SRP, Expert, Polimorfismo, LSP.
+# Documentación del uso de principios/patrones SRP, Expert, Polimorfismo, LSP.
 
-##**SRP en clase ImpresoraDePantalla.**
+## **SRP en clase ImpresoraDePantalla.**
 
 Decidimos utilizar la clase ImpresoraDePantalla para ir mostrando los diferentes estados de la batalla
 por la pantalla (en este caso el Bot de telegram); decidimos hacerlo así en lugar de implementar esta
