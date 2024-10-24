@@ -9,8 +9,7 @@ public class Jugador
    private Pokemon pokemonelegido;
    private string nombre;
    private List<IItems> items = new List<IItems>();
-
-   public Jugador(string nombre)
+   public Jugador(string nombre, List<IItems> mochila=null)
    {
       this.nombre = nombre;
       items.Add(new Revivir());
@@ -20,6 +19,7 @@ public class Jugador
       items.Add(new SuperPocion());
       items.Add(new CuracionTotal());
       items.Add(new CuracionTotal());
+      items = mochila;
    }
    public string Nombre
    {
@@ -39,6 +39,11 @@ public class Jugador
    {
       get { return pokemones; }
    }
+   
+   public List<IItems> Items
+   {
+      get { return items; }
+   }
 
    public Pokemon Pokemonelegido
    {
@@ -50,4 +55,5 @@ public class Jugador
    {
       return Pokemonelegido != null && Pokemonelegido.Hp > 0;
    }
+   
 }
