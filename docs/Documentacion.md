@@ -1,6 +1,6 @@
-Documentación del uso de principios/patrones SRP, Expert, Polimorfismo, LSP.
+#Documentación del uso de principios/patrones SRP, Expert, Polimorfismo, LSP.
 
-**SRP en clase ImpresoraDePantalla.**
+##**SRP en clase ImpresoraDePantalla.**
 
 Decidimos utilizar la clase ImpresoraDePantalla para ir mostrando los diferentes estados de la batalla
 por la pantalla (en este caso el Bot de telegram); decidimos hacerlo así en lugar de implementar esta
@@ -8,7 +8,7 @@ función en la clase Batalla ya que de hacerlo de este modo no estaríamos cumpl
 SRP, ya que Batalla tendría más de una razón de cambio, manejaría los contadores de turnos y la forma
 en que se imprime la propia batalla en el Bot.
 
-**Expert en clase Efectividad.**
+##**Expert en clase Efectividad.**
 
 Al implementar el método getEfectividad en Efectividad aplicamos la guía de diseño Expert, ya que le
 asignamos el método a la clase que tiene la mayor cantidad de información para realizar esta acción,
