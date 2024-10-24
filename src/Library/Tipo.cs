@@ -6,7 +6,7 @@ public class Tipo
     private List<IAtaque> ataques = new List<IAtaque>();
     public List<AtaqueComun> AtaquesComunes { get; set; } = new List<AtaqueComun>();
     public List<AtaqueEspecial> AtaquesEspeciales { get; set; } = new List<AtaqueEspecial>();
-    public Tipo(string Nombre, List<IAtaque> Ataques)
+    public Tipo(string Nombre, List<IAtaque> Ataques) //agrego constructor para que tipo tenga un nombre y un ataque
     {
         AgregarAtaques(Ataques);
         this.nombre = Nombre;
@@ -26,15 +26,15 @@ public class Tipo
 
     private void AgregarAtaques(List<IAtaque> ataques)
     {
-        foreach (var ataque in ataques)
+        foreach (var ataque in ataques) //para cada ataque en ataques)
         {
-            if (ataque is AtaqueComun ataqueComun)
+            if (ataque is AtaqueComun ataqueComun) //verifica si es un ataque comun
             {
-                AtaquesComunes.Add(ataqueComun);
+                AtaquesComunes.Add(ataqueComun); //se agrega 
             }
-            else if (ataque is AtaqueEspecial ataqueEspecial)
+            else if (ataque is AtaqueEspecial ataqueEspecial) // sino verifica si era especial
             {
-                AtaquesEspeciales.Add(ataqueEspecial);
+                AtaquesEspeciales.Add(ataqueEspecial); //se agrega
             }
         }
 

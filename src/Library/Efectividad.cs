@@ -8,8 +8,8 @@ public class Efectividad
     public static Dictionary<string, Dictionary<string, double>> TablaTipos = new()
     {
         {
-            "Fuego",
-            new Dictionary<string, double>()
+            "Fuego", //tipo
+            new Dictionary<string, double>() //efectividad contra otros tipos
             {
                 { "Fuego", 0.5 }, { "Agua", 0.5 }, { "Planta", 2.0 }, { "Electrico", 1.0 }, { "Roca", 0.5 },
                 { "Dragon", 0.5 }, {"Bicho", 2.0}, {"Fantasma", 1.0}, {"Hielo", 2.0}, {"Lucha", 1.0}, {"Normal", 1.0},
@@ -147,15 +147,15 @@ public class Efectividad
     
     public static double getEfectividad(Tipo atacante, Tipo receptor)
     {
-        if (TablaTipos.ContainsKey(atacante.Nombre))
+        if (TablaTipos.ContainsKey(atacante.Nombre)) //si el tipo atacante esta en la tabla tipos
         {
-            var efectividades = TablaTipos[atacante.Nombre];
+            var efectividades = TablaTipos[atacante.Nombre];//obtiene el diccionario de efectividades del tipo
 
-            if (efectividades.ContainsKey(receptor.Nombre))
+            if (efectividades.ContainsKey(receptor.Nombre)) //verifica si el receptor está en las efectividades del atacante
             {
-                return efectividades[receptor.Nombre];
+                return efectividades[receptor.Nombre]; //devuelve el valor correspondiente
             }
         } 
-        return 1.0;
+        return 1.0; //sino se encuentra, devuelve 1.0, efectividad normal.
     }
 }

@@ -10,10 +10,10 @@ public class Quemadura : IEfecto
 
     public void AplicarEfecto(Jugador receptor)
     {
-        if (!receptor.Pokemonelegido.EstaQuemado)
+        if (!receptor.Pokemonelegido.EstaQuemado)// si el pokemon elegido del jugador receptor esta quemado
         {
-            receptor.Pokemonelegido.EstaQuemado = true;
-            receptor.Pokemonelegido.TieneEstadoEspecial = true;
+            receptor.Pokemonelegido.EstaQuemado = true;//ponemos en true, en verdadero, que esta quemado
+            receptor.Pokemonelegido.TieneEstadoEspecial = true;//lo mismo, pero que este contiene un estado especial
             Console.WriteLine($"{receptor.Pokemonelegido.Nombre} ha sido quemado");
 
         }

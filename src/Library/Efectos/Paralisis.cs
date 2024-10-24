@@ -9,10 +9,10 @@ public class Paralisis : IEfecto
     private string nombre = "Paralisis";
     public void AplicarEfecto( Jugador receptor)
     {
-        if (!receptor.Pokemonelegido.EstaParalizado)
+        if (!receptor.Pokemonelegido.EstaParalizado)// si el pokemon elegido del jugador receptor esta paralizado
         {
-            receptor.Pokemonelegido.EstaParalizado = true;
-            receptor.Pokemonelegido.TieneEstadoEspecial = true;
+            receptor.Pokemonelegido.EstaParalizado = true;//ponemos en true, en verdadero, que esta paralizado
+            receptor.Pokemonelegido.TieneEstadoEspecial = true;//lo mismo, pero que este contiene un estado especial
             Console.WriteLine($"{receptor.Pokemonelegido.Nombre} ha sido Paralizado");
         }
         else

@@ -9,10 +9,10 @@ public class Jugador
    private Pokemon pokemonelegido;
    private string nombre;
    private List<IItems> items = new List<IItems>();
-   public Jugador(string nombre, List<IItems> mochila=null)
+   public Jugador(string nombre, List<IItems> mochila=null) //agrego un constructor con el nombre del jugador, y los items que podrá tener
    {
       this.nombre = nombre;
-      items.Add(new Revivir());
+      items.Add(new Revivir());//agregamos las instancias de items a items (que luego se llamará mochila)
       items.Add(new SuperPocion());
       items.Add(new SuperPocion());
       items.Add(new SuperPocion());
@@ -27,7 +27,7 @@ public class Jugador
       set { nombre = value; }
    }
    
-   public void ElegirPokemon(Pokemon pokemon)
+   public void ElegirPokemon(Pokemon pokemon) //contamos cuantos pokemones va a tener cada jugador(maximo 6)
    {
       if (pokemones.Count < 6)
       {
@@ -51,7 +51,7 @@ public class Jugador
       set { pokemonelegido = value; }
    }
 
-   public bool TienePokemonVivos()
+   public bool TienePokemonVivos() //verifica si tiene pokemones vivos el jugador
    {
       return Pokemonelegido != null && Pokemonelegido.Hp > 0;
    }
